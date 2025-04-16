@@ -52,10 +52,15 @@
                                         alt="{{ item.nome }}" class="produto-imagem">
                                     {% endif %}
                                 </div>
-                                <form method="POST" action="{{ url_for('excluir_item', item_id=item.id) }}"
+                                <div class="botoes-ee">
+                                    <form action="{{ url_for('editar_produto', item_id=item.id) }}" class="form-editar">
+                                        <button type="submit" class="btn-editar">Editar</button>
+                                    </form>
+                                    <form method="POST" action="{{ url_for('excluir_item', item_id=item.id) }}"
                                     class="form-excluir" onsubmit="return confirmarExclusao()">
-                                    <button type="submit" class="btn-excluir">Excluir</button>
-                                </form>
+                                        <button type="submit" class="btn-excluir">Excluir</button>
+                                    </form>
+                                </div>
                             </div>
                             {% endfor %}
                         </div>

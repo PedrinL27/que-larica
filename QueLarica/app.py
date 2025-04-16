@@ -557,6 +557,43 @@ def cadastro_produto():
 
     return render_template('restaurante/cadastrar_item.html', restaurante=restaurante)
 
+@app.route('/editar_produto/<int:item_id>', methods=['GET', 'POST'])
+@login_required
+def editar_produto(item_id):
+    if 'user_id' not in session or session['user_type'] != 'restaurante':
+        return redirect(url_for('home'))
+
+    restaurante = Restaurante.query.get(session['user_id'])
+    produto = Produto.query.get(item_id)
+
+    if not restaurante or not produto or produto.restaurante_id != restaurante.id:
+        flash("Produto não encontrado ou você não tem permissão.", "error")
+        return redirect(url_for('dashboard_restaurante'))
+
+    if request.method == 'POST':
+        produto.nome = request.form['nome']
+        produto.descricao = request.form['descricao']
+        produto.preco = float(request.form['preco'])
+
+        if 'imagem' in request.files:
+            file = request.files['imagem']
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(UPLOAD_FOLDER, filename))
+                produto.imagem = filename
+
+        try:
+            db.session.commit()
+            flash("Produto atualizado com sucesso!", "success")
+            return redirect(url_for('dashboard_restaurante'))
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Erro ao atualizar produto: {e}", "error")
+        finally:
+            db.session.remove()
+
+    return render_template('restaurante/editar.html', restaurante=restaurante, produto=produto)
+
 @app.route('/excluir_item/<int:item_id>', methods=['POST'])
 @login_required
 def excluir_item(item_id):

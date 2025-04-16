@@ -1,0 +1,41 @@
+{% extends 'restaurante/dashboard.html' %}
+{% block content %}
+<div class="form-container">
+    <h1>Editar Produto</h1>
+
+    <form class="formulario" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome" value="{{ produto.nome }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <input type="text" name="descricao" id="descricao" value="{{ produto.descricao }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="preco">Preço (R$):</label>
+            <input type="number" step="0.01" name="preco" id="preco" value="{{ produto.preco }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="imagem">Imagem (opcional):</label>
+            <input type="file" name="imagem" id="imagem">
+        </div>
+    
+        <div class="form-group">
+            {%   if produto.imagem %}
+                <p>Imagem atual:</p>
+                <img src="{{ url_for('static', filename='uploads/' + produto.imagem) }}" alt="Imagem atual" width="150">
+            {% endif %}
+        </div>
+
+        <div class="botoes-ee">
+            <button type="submit" class="button">Salvar Alterações</button>
+            <button class="button-cancelar" href="{{ url_for('dashboard_restaurante') }}">Cancelar</button>
+        </div>
+
+    </form>
+</div>
+{% endblock %}
