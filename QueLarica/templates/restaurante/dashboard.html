@@ -32,7 +32,10 @@
             <main class="main-content">
                 {% block content %}
                 <div class="menu-container">
-                    <h1>Itens do Menu</h1>
+                    <h1>Itens do Menu</h1>  
+                    <div class="caixa-pesq">
+                        <input type="search" id="search-input" placeholder="Pesquisar" onkeyup="filtrarItens()">
+                    </div>
                     <section id="itens_menu">
                         {% if itens_menu %}
                         <div class="itens-grid">
@@ -79,6 +82,24 @@
     function confirmarExclusao() {
         // Exibe a caixa de confirmação
         return confirm("Tem certeza que deseja excluir este item?");
+    }
+
+    function filtrarItens() {
+        // Obtém o valor da pesquisa
+        const searchTerm = document.getElementById('search-input').value.toLowerCase();
+        
+        // Obtém todos os itens do menu
+        const items = document.querySelectorAll('.produto-card');
+        
+        // Itera sobre os itens e oculta os que não correspondem ao termo de pesquisa
+        items.forEach(item => {
+            const itemName = item.querySelector('h2').textContent.toLowerCase();
+            if (itemName.includes(searchTerm)) {
+                item.style.display = ''; // Exibe o item
+            } else {
+                item.style.display = 'none'; // Oculta o item
+            }
+        });
     }
 </script>
 

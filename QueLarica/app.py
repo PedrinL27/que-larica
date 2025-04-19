@@ -156,14 +156,14 @@ def home():
             session['user_type'] = user_type
             session['user_name'] = user.nome
         
-        if user_type == 'cliente':
-            return {"success": True, "redirect_url": "/dashboard_cliente"}, 200
-        elif user_type == 'restaurante':
-            return {"success": True, "redirect_url": "/dashboard_restaurante"}, 200
-        elif user_type == 'entregador':
-            return {"success": True, "redirect_url": "/dashboard_entregador"}, 200
+            if user_type == 'cliente':
+                return {"success": True, "redirect_url": "/dashboard_cliente"}, 200
+            elif user_type == 'restaurante':
+                return {"success": True, "redirect_url": "/dashboard_restaurante"}, 200
+            elif user_type == 'entregador':
+                return {"success": True, "redirect_url": "/dashboard_entregador"}, 200
         else:
-            return {"success": False, "message": "Email ou senha incorretos."}, 401
+            return {"success": False, "message": "Email ou Senha Incorretos"}, 401
     
     return render_template("home/home.html")
 

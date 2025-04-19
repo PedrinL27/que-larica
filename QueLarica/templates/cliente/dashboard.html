@@ -58,4 +58,25 @@
         </div>
     </body>
 </body>
+
+<script>
+    function filtrarItens() {
+        // Obtém o valor da pesquisa
+        const searchTerm = document.getElementById('search-input').value.toLowerCase();
+        
+        // Obtém todos os itens do cardápio
+        const items = document.querySelectorAll('.card-produto');
+        
+        // Itera sobre os itens e oculta os que não correspondem ao termo de pesquisa
+        items.forEach(item => {
+            const itemName = item.querySelector('h3').textContent.toLowerCase();
+            if (itemName.includes(searchTerm)) {
+                item.style.display = ''; // Exibe o item
+            } else {
+                item.style.display = 'none'; // Oculta o item
+            }
+        });
+    }
+</script>
+
 </html>

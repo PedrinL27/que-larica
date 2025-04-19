@@ -6,6 +6,9 @@
 
         <section id="itens_menu">
             {% if produtos %}
+            <div class="caixa-pesq">
+                <input type="search" id="search-input" placeholder="Pesquisar" onkeyup="filtrarItens()">
+            </div>
                 <div class="menu-grid">
                     {% for produto in produtos %}
                     <div class="card-produto">
@@ -33,4 +36,5 @@
             {% endif %}
         </section>
     </div>
+    
 {% endblock %}

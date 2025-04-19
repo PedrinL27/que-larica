@@ -56,32 +56,25 @@ body, html {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background 0.3s;
-    transition: all 0.2s ease-in-out;
+    transition: background 0.3s, transform 0.2s ease-in-out;
 }
 
-.cliente { 
-    background-color: #4CAF50; color: white; 
-}
-.restaurante { 
-    background-color: #2196F3; color: white; 
-}
-.entregador { 
-    background-color: #FF9800; color: white; 
-}
+.cliente { background-color: #4CAF50; color: white; }
+.restaurante { background-color: #2196F3; color: white; }
+.entregador { background-color: #FF9800; color: white; }
 
 .cliente:hover {
-    background-color: #2f4b30; color: white; 
+    background-color: #2f4b30;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
     transform: scale(1.01);
 }
 .restaurante:hover {
-    background-color: #1b4466; color: white; 
+    background-color: #1b4466;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
     transform: scale(1.01);
 }
-.entregador:hover { 
-    background-color: #684512; color: white; 
+.entregador:hover {
+    background-color: #684512;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);  
     transform: scale(1.01);
 }
@@ -92,8 +85,7 @@ body, html {
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
-    display: flex;
-    gap: 10px; 
+    gap: 10px;
 }
 
 .login-form input {
@@ -104,36 +96,62 @@ body, html {
     border-radius: 5px;
 }
 
-.form-buttonC {
-    padding: 20px 30px;
+.button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.form-buttonC, .form-buttonE {
+    flex: 1;
+    padding: 18px 0;
     cursor: pointer;
     color: white; 
     border: none;
     border-radius: 5px; 
     font-size: 16px;
-    position: absolute;
-    top: 70%; 
-    right: 25%;
     transition: all 0.2s ease-in-out;
 }
-.form-buttonC:hover {
+
+.form-buttonC:hover, .form-buttonE:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
     transform: scale(1.01);
 }
 
-.form-buttonE {
-    padding: 20px 40px;
-    cursor: pointer;
-    color: white; 
-    border: none;
-    border-radius: 5px; 
-    font-size: 16px;
-    position: absolute;
-    top: 70%; 
-    left: 25%;
-    transition: all 0.2s ease-in-out;
+.error-message {    
+    position: relative;
+    background-color: rgb(208, 0, 0);
+    color: #ffffff;
+    border: transparent;
+    padding: 10px 40px 10px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
 }
-.form-buttonE:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
-    transform: scale(1.01);
+
+.close-error-btn {  
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

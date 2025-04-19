@@ -178,6 +178,21 @@ html {
     gap: 20px;
 }
 
+.caixa-pesq {
+    display: flex;
+    justify-content: center; /* centraliza horizontalmente */
+    gap: 10px; /* espaço entre os botões */
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+.caixa-pesq input {
+    border-radius: 25px;
+    border: 0;
+    width: 260px;
+    height: 30px;
+    text-align: center;
+}
+
 .card-produto {
     background-color: #fff;
     border-radius: 10px;

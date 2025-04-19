@@ -26,14 +26,23 @@
     <button class="button entregador" onclick="showForm('entregador')">Entregador</button>
     </div>
 
-
     <div class="login-form" id="login-form" style="display: none;">
+        <div id="login-error" class="error-message" style="display: none;">
+            <span id="error-text"></span>
+            <button id="close-error" class="close-error-btn">&times;</button>
+        </div>
+        
         <input type="email" placeholder="E-mail" id="email">
         <input type="password" placeholder="Senha" id="password">
-        <button class="form-buttonE" id="button-loggin">Entrar</button>
-        <button class="form-buttonC" id="button-cadastro">Cadastro</button>
+
+        <div class="button-wrapper">
+            <button class="form-buttonE" id="button-loggin">Entrar</button>
+            <button class="form-buttonC" id="button-cadastro">Cadastro</button>
+        </div>
     </div>
 </div>
+
+
 
 <script src="{{ url_for('static', filename='script/home/login.js') }}"></script>
 <script src="{{ url_for('static', filename='script/home/tentativa_login.js') }}"></script>
