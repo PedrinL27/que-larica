@@ -12,7 +12,7 @@
             <h4>Itens:</h4>
             <ul>
                 {% for item in detalhes.itens %}
-                    <li>{{ item.quantidade }}x {{ item.produto.nome }} - R$ {{ "%.2f"|format(item.subtotal) }}</li>
+                    <li>{{ item.quantidade }}x {{ item.produto_nome }} - R$ {{ "%.2f"|format(item.subtotal) }}</li>
                 {% endfor %}
             </ul>
 

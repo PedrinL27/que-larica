@@ -1,157 +1,223 @@
-* {
+html{
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    body {
+    border: 0;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-body, html {
-    height: 100%;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: url('/static/img/home/background.jpg') no-repeat center center fixed;
-    background-size: cover;
-}
-
-.container {
-    width: 600px;
-    height: 600px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.2); 
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.5s ease;
-    position: relative;
-}
-
-.return-button {
-    background-image: url('/static/img/home/return.png'); 
-    background-size: 30%;
+    flex-direction: column;
+    background-image:url('/static/img/home/background.png');
     background-repeat: no-repeat;
+    background-size: cover;
     background-position: center;
-    background-color: transparent;
-    border: none;
-    color: transparent; 
-    width: 120px; 
-    height: 40px; 
-    cursor: pointer;
-    transition: opacity 0.5s ease;
-    opacity: 1; 
+
+}
+#top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
+
+}
+#modo_escuro{
+    margin-top: 30px;
+    border-radius: 100px;
+    border: 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    margin-right: 30px;
+    height: 50px;
+    width: 50px;
+    margin-left: 150px;
+}
+img {
+    
+    margin-left: 10px;
+    width: 200px;
+    height: auto;
+}
+
+#main-container {
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 30px;
+    background: rgba(163, 163, 163, 0.644);
+    border-radius: 30px;
     position: absolute;
-    top: 35px; 
-    left: 10px; 
-}
-
-.logo img {
-    max-width: 400px; 
-}
-
-.button {
-    width: 75%;
-    padding: 25px;
-    margin: 15px 0;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s ease-in-out;
-}
-
-.cliente { background-color: #4CAF50; color: white; }
-.restaurante { background-color: #2196F3; color: white; }
-.entregador { background-color: #FF9800; color: white; }
-
-.cliente:hover {
-    background-color: #2f4b30;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
-    transform: scale(1.01);
-}
-.restaurante:hover {
-    background-color: #1b4466;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
-    transform: scale(1.01);
-}
-.entregador:hover {
-    background-color: #684512;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);  
-    transform: scale(1.01);
-}
-
-.login-form {
-    padding: 15px 25px;
+    height: auto;
+    width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
-    gap: 10px;
+    
 }
-
-.login-form input {
-    width: 90%;
-    padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.button-wrapper {
+#login-form {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 20px;
-    gap: 20px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
 }
-
-.form-buttonC, .form-buttonE {
-    flex: 1;
-    padding: 18px 0;
-    cursor: pointer;
-    color: white; 
-    border: none;
-    border-radius: 5px; 
-    font-size: 16px;
-    transition: all 0.2s ease-in-out;
-}
-
-.form-buttonC:hover, .form-buttonE:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
-    transform: scale(1.01);
-}
-
-.error-message {    
-    position: relative;
-    background-color: rgb(208, 0, 0);
-    color: #ffffff;
-    border: transparent;
-    padding: 10px 40px 10px 10px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    font-size: 14px;
+#button-choice{
+   
+    font-weight: bold;
+    font-size: 40px;
+    background: rgba(163, 163, 163, 0.644);
+    border-radius: 30px;
+    position: absolute;
+    height: 450px;
+    width: 600px;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-.close-error-btn {  
-    position: absolute;
-    top: 5px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    font-size: 18px;
-    color: #ffffff;
+.cliente {
+    width: 450px;
+    height: 80px;
+    margin-bottom: 20px;
+    border: 0;
+    border-radius: 25px;
+    padding: 10px 20px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    transition: 0.2s ease-in-out;
+}
+
+.restaurante {
+    width: 450px;
+    height: 80px;
+    margin: 20px;
+    border: 0;
+    border-radius: 25px;    
+    padding: 10px 20px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+.entregador {
+    width: 450px;
+    height: 80px;
+    margin: 20px;
+    border: 0;
+    border-radius: 25px;
+    padding: 10px 20px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+.cliente:hover {
+    background-color: rgb(0, 158, 0);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    transform: scale(1.05);
+}
+
+.entregador:hover {
+    background-color: rgb(211, 235, 0);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    transform: scale(1.05);
+}
+
+.restaurante:hover {
+    background-color: rgb(0, 17, 255);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    transform: scale(1.05);
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    width: auto;
+    background-color: rgb(255, 255, 255);
+    
+}
+
+#email{
+    border-radius: 25px;
+    border: 0;
+    text-align: center;
+  
+    width: 380px;
+    height: 50px;
+
+}
+#password{
+    border-radius: 25px;
+    border: 0;
+    margin-top: 30px;
+    text-align: center;
+    width: 380px;
+    height: 50px;
+}
+#button-wrapper{
+    height: 100%;
+    padding-bottom: 20px;
+
+}
+
+#login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 40px;
+}
+
+#button-loggin{
+    border-radius: 25px;
+    height: 40px;
+    width: 250px;
+    margin-right: 30px;
+    border: 0;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+#button-cadastro {
+    border-radius: 25px;
+    height: 40px;
+    width: 250px;
+    border: 0;
     cursor: pointer;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-5px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+#button-return{
+    width: 100%;
+    padding-left: 30px;
+    padding-top: 30px;
+    background-color: rgba(250, 235, 215, 0);
+    border: 0;
+}
+#return{
+    background-color: rgba(240, 248, 255, 0);
+    height: 30px;
+    width: 30px;
+}
+#return1 {
+    background-color: rgba(250, 235, 215, 0);
+    border: 0;
+    cursor: pointer;
+}
+
+#txt {
+    font-size: 62px;
+    font-weight: bold;
+}
+#role-text {
+    font-size: 50px;
+    height: 0px;
+    margin-bottom: 90px;
 }

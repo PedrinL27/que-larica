@@ -22,9 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     loginButton.addEventListener('click', function () {
-        const email = emailInput.value;
-        const password = passwordInput.value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
+        // Determina o tipo de usuário pelo background color do container
         let userType = '';
         const container = document.getElementById('main-container');
         const bgColor = container.style.backgroundColor;
@@ -33,28 +34,29 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (bgColor.includes('33, 150, 243')) userType = 'restaurante';
         else if (bgColor.includes('255, 152, 0')) userType = 'entregador';
 
+        // Verifica se os campos estão preenchidos
+        if (!email || !password) {
+            alert('Por favor, preencha todos os campos.');
+            return;
+        }
+
+        // Envia os dados para o backend
         fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password, userType })
         })
-        .then(response => response.json().then(data => ({ status: response.status, body: data })))
-        .then(({ status, body }) => {
-            if (body.success) {
-                window.location.href = body.redirect_url;
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Redireciona para o dashboard do usuário
+                window.location.href = data.redirect_url;
             } else {
-                if (errorMessage && errorText) {
-                    errorText.textContent = body.message || "Erro desconhecido.";
-                    errorMessage.style.display = 'flex';
-                }
+                alert(data.message || 'Erro no login.');
             }
         })
-        .catch(error => {
-            console.error('Erro no login:', error);
-            if (errorMessage && errorText) {
-                errorText.textContent = "Erro ao conectar com o servidor.";
-                errorMessage.style.display = 'flex';
-            }
-        });
+        .catch(error => console.error('Erro ao fazer login:', error));
     });
 });
+
+

@@ -10,43 +10,44 @@
 
 <body>
 
-<div class="container" id="main-container">
-    
-    <div class="button-return" id="button-return" style="display: none;">
-        <button class="return-button" onclick="showForm('voltar')">Voltar</button>
+    <div id="top">
+        <img src="{{ url_for('static', filename='img/home/nova_logo.png') }}" alt="Logo">
+        <p id="txt">Bem Vindo(a)!</p>
+        <button id="modo_escuro">Escuro</button>
     </div>
+    <div id="main">
+    <div id="main-container">
+        <div id="button-choice">
+            <button class="cliente" onclick="showForm('cliente')">Cliente</button>
+            <button class="restaurante" onclick="showForm('restaurante')">Restaurante</button>
+            <button class="entregador" onclick="showForm('entregador')">Entregador</button>
+        </div>
 
-    <div class="logo">
-        <img src="{{ url_for('static', filename='img/home/logo.png') }}" alt="Logo">
-    </div>
+        <div id="button-return" style="display: none;">
+            <button id="return1" onclick="showForm('voltar')">
+                <img id="return" src="{{ url_for('static', filename='img/home/return.png') }}" alt="">
+            </button>
+        </div>
 
-    <div class="button-choice" id="button-choice">
-    <button class="button cliente" onclick="showForm('cliente')">Cliente</button>
-    <button class="button restaurante" onclick="showForm('restaurante')">Restaurante</button>
-    <button class="button entregador" onclick="showForm('entregador')">Entregador</button>
-    </div>
-
-    <div class="login-form" id="login-form" style="display: none;">
-        <div id="login-error" class="error-message" style="display: none;">
-            <span id="error-text"></span>
-            <button id="close-error" class="close-error-btn">&times;</button>
+        <div id="login-form" style="display: none;">
+            <div id="role-display">
+            <p id="role-text"></p>
+            </div>
+            <div id="login">
+                <input type="email" placeholder="E-mail" id="email">
+                <input type="password" placeholder="Senha" id="password">
+            </div>
+            <div class="button-wrapper">
+                <button id="button-loggin">Entrar</button>
+                <button id="button-cadastro">Cadastro</button>
+            </div>
         </div>
         
-        <input type="email" placeholder="E-mail" id="email">
-        <input type="password" placeholder="Senha" id="password">
-
-        <div class="button-wrapper">
-            <button class="form-buttonE" id="button-loggin">Entrar</button>
-            <button class="form-buttonC" id="button-cadastro">Cadastro</button>
-        </div>
     </div>
-</div>
-
-
-
-<script src="{{ url_for('static', filename='script/home/login.js') }}"></script>
-<script src="{{ url_for('static', filename='script/home/tentativa_login.js') }}"></script>
-
+    </div>
+    <script src="{{ url_for('static', filename='script/home/login.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/home/tentativa_login.js') }}"></script>
+    
 </body>
 </html>
 

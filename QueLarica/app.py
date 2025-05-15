@@ -106,14 +106,13 @@ class ItemPedido(db.Model):
     __tablename__ = 'itens_pedido'
     id = db.Column(db.Integer, primary_key=True)
     pedido_id = db.Column(db.Integer, db.ForeignKey('pedidos.id'), nullable=False)
-    produto_id = db.Column(db.Integer, db.ForeignKey('produtos.id'), nullable=False)
+    produto_nome = db.Column(db.String(100), nullable=False)
     quantidade = db.Column(db.Integer, nullable=False)
     subtotal = db.Column(db.Float, nullable=False)
-    produto = db.relationship('Produto', backref='itens_pedido')
 
 # Comando para criar as tabelas no banco de dados
 #with app.app_context():
-#    db.create_all()
+#   db.create_all()
 
 def login_required(f):
     @wraps(f)
@@ -408,7 +407,7 @@ def atualizar_pedidos_e_limpar_carrinho(forma_pagamento):
     for item in carrinho.itens:
         item_pedido = ItemPedido(
             pedido_id=pedido.id,
-            produto_id=item.produto_id,
+            produto_nome=item.produto.nome,
             quantidade=item.quantidade,
             subtotal=item.subtotal
         )
