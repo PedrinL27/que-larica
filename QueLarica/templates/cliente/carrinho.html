@@ -12,7 +12,11 @@
         {% for item in itens %}
         <div class="carrinho-item">
             <div class="produto-info">
-                <img src="{{ url_for('static', filename='uploads/' + item.produto.imagem) }}" alt="{{ item.produto.nome }}" class="produto-imagem">
+                {% if item.produto.imagem %}
+                    <img src="{{ url_for('static', filename='uploads/' + item.produto.imagem) }}" alt="{{ item.produto.nome }}" class="produto-imagem">
+                {% else %}
+                    <img src="{{ url_for('static', filename='img/restaurante/sem-imagem.png') }}" alt="{{ item.produto.nome }}" class="produto-imagem">
+                {% endif %}
                 <div>
                     <h3>{{ item.produto.nome }}</h3>
                     <p>Quantidade: <strong>{{ item.quantidade }}</strong></p>
