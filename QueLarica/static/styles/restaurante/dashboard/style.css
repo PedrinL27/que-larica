@@ -444,3 +444,110 @@ textarea::placeholder {
     background-color: #a56e1c;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
+    /* Contêiner de configurações */
+    .configuracoes {
+        margin: 20px auto;
+        max-width: 600px;
+        padding: 20px;
+        background-color: rgb(20, 106, 177, 0.2);
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    /* Toggle de status */
+    .toggle {
+        position: relative;
+        display: inline-block;
+        width: 70px;
+        height: 40px;
+        margin-top: 10px;
+    }
+
+    .toggle input {
+        display: none;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: background-color 0.3s ease;
+        border-radius: 20px;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 30px;
+        width: 30px;
+        left: 5px;
+        bottom: 5px;
+        background-color: white;
+        transition: transform 0.3s ease;
+        border-radius: 50%;
+    }
+
+    input:checked + .slider {
+        background-color: #28a745;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(30px);
+    }
+
+    /* Formulário de foto */
+    .foto-titulo {
+        font-size: 1.2rem;
+        color: #34495e;
+        margin-top: 20px;
+        display: block;
+    }
+
+    .foto-upload {
+        margin: 20px 0;
+    }
+
+    /* Botão de upload */
+    .btn-upload {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-upload:hover {
+        background-color: #388E3C;
+    }
+
+    /* Pré-visualização da foto */
+    .foto-preview-container {
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .restaurante-foto {
+        max-width: 150px;
+        max-height: 150px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 2px solid #ccc;
+        object-fit: cover;
+    }

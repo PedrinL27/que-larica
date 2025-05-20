@@ -2,12 +2,12 @@
 
 {% block content %}
     <div class="menu-container">
-        <h1>Cardápio de {{ restaurante.nome }}</h1>
+        <h1>{{ _('Cardápio de') }} {{ restaurante.nome }}</h1>
 
         <section id="itens_menu">
             {% if produtos %}
             <div class="caixa-pesq">
-                <input type="search" id="search-input" placeholder="Pesquisar" onkeyup="filtrarItens()">
+                <input type="search" id="search-input" placeholder="{{ _('Pesquisar') }}" onkeyup="filtrarItens()">
             </div>
                 <div class="menu-grid">
                     {% for produto in produtos %}
@@ -25,14 +25,14 @@
                         <div class="btn-container">
                             <form method="POST" action="{{ url_for('adicionar_ao_carrinho') }}">
                                 <input type="hidden" name="produto_id" value="{{ produto.id }}">
-                                <button type="submit" class="btn-adicionar-carrinho">Adicionar ao Carrinho</button>
+                                <button type="submit" class="btn-adicionar-carrinho">{{ _('Adicionar ao Carrinho') }}</button>
                             </form>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
             {% else %}
-                <p class="mensagem-vazia">Este restaurante ainda não possui produtos no cardápio.</p>
+                <p class="mensagem-vazia">{{ _('Este restaurante ainda não possui produtos no cardápio.') }}</p>
             {% endif %}
         </section>
     </div>

@@ -3,85 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>{{ _('Dashboard') }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/restaurante/dashboard/style.css') }}">
 </head>
 <body>
 
-    <body>
-        <div class="dashboard-container">
-            <!-- Barra Lateral -->
-            <aside class="sidebar">
-                <div class="sidebar-header">
-                    <h2>{{ restaurante.nome }}</h2>
-                </div>
-                <nav class="sidebar-nav">
-                    <ul>
-                        <li><a href="{{ url_for('dashboard_restaurante') }}">Início</a></li>
-                        <li><a href="{{ url_for('cadastro_produto') }}">Cadastrar Item</a></li>
-                        <li><a href="{{ url_for('pedidos_restaurante') }}">Pedidos</a></li>
-                        <li><a href="{{ url_for('configuracoes') }}">Configurações</a></li>
-                        <li><a href="{{ url_for('logout') }}">Sair</a></li>
-                    </ul>
-                </nav>
-            </aside>
+    <div class="dashboard-container">
+        <!-- Barra Lateral -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>{{ restaurante.nome }}</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="{{ url_for('dashboard_restaurante') }}">{{ _('Início') }}</a></li>
+                    <li><a href="{{ url_for('cadastro_produto') }}">{{ _('Cadastrar Item') }}</a></li>
+                    <li><a href="{{ url_for('pedidos_restaurante') }}">{{ _('Pedidos') }}</a></li>
+                    <li><a href="{{ url_for('configuracoes') }}">{{ _('Configurações') }}</a></li>
+                    <li><a href="{{ url_for('logout') }}">{{ _('Sair') }}</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-            <!-- Conteúdo Principal -->
-            <main class="main-content">
-                {% block content %}
-                <div class="menu-container">
-                    <h1>Itens do Menu</h1>  
-                    <div class="caixa-pesq">
-                        <input type="search" id="search-input" placeholder="Pesquisar" onkeyup="filtrarItens()">
-                    </div>
-                    <section id="itens_menu">
-                        {% if itens_menu %}
-                        <div class="itens-grid">
-                            {% for item in itens_menu %}
-                            <div class="produto-card">
-                                <div class="produto-conteudo">
-                                    <h2>{{ item.nome }}</h2>
-                                    <p class="preco">R$ {{ "%.2f"|format(item.preco) }}</p>
-                                    <p class="descricao">{{ item.descricao }}</p>
-                                </div>
-                                <div class="produto-imagem-wrapper">
-                                    {% if item.imagem %}
-                                    <img src="{{ url_for('static', filename='uploads/' + item.imagem) }}"
-                                        alt="{{ item.nome }}" class="produto-imagem">
-                                    {% else %}
-                                    <img src="{{ url_for('static', filename='img/restaurante/sem-imagem.png') }}"
-                                        alt="{{ item.nome }}" class="produto-imagem">
-                                    {% endif %}
-                                </div>
-                                <div class="botoes-ee">
-                                    <form action="{{ url_for('editar_produto', item_id=item.id) }}" class="form-editar">
-                                        <button type="submit" class="btn-editar">Editar</button>
-                                    </form>
-                                    <form method="POST" action="{{ url_for('excluir_item', item_id=item.id) }}"
-                                    class="form-excluir" onsubmit="return confirmarExclusao()">
-                                        <button type="submit" class="btn-excluir">Excluir</button>
-                                    </form>
-                                </div>
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            {% block content %}
+            <div class="menu-container">
+                <h1>{{ _('Itens do Menu') }}</h1>  
+                <div class="caixa-pesq">
+                    <input type="search" id="search-input" placeholder="{{ _('Pesquisar') }}" onkeyup="filtrarItens()">
+                </div>
+                <section id="itens_menu">
+                    {% if itens_menu %}
+                    <div class="itens-grid">
+                        {% for item in itens_menu %}
+                        <div class="produto-card">
+                            <div class="produto-conteudo">
+                                <h2>{{ item.nome }}</h2>
+                                <p class="preco">R$ {{ "%.2f"|format(item.preco) }}</p>
+                                <p class="descricao">{{ item.descricao }}</p>
                             </div>
-                            {% endfor %}
+                            <div class="produto-imagem-wrapper">
+                                {% if item.imagem %}
+                                <img src="{{ url_for('static', filename='uploads/' + item.imagem) }}"
+                                    alt="{{ item.nome }}" class="produto-imagem">
+                                {% else %}
+                                <img src="{{ url_for('static', filename='img/restaurante/sem-imagem.png') }}"
+                                    alt="{{ item.nome }}" class="produto-imagem">
+                                {% endif %}
+                            </div>
+                            <div class="botoes-ee">
+                                <form action="{{ url_for('editar_produto', item_id=item.id) }}" class="form-editar">
+                                    <button type="submit" class="btn-editar">{{ _('Editar') }}</button>
+                                </form>
+                                <form method="POST" action="{{ url_for('excluir_item', item_id=item.id) }}"
+                                class="form-excluir" onsubmit="return confirmarExclusao()">
+                                    <button type="submit" class="btn-excluir">{{ _('Excluir') }}</button>
+                                </form>
+                            </div>
                         </div>
-                        {% else %}
-                        <p class="mensagem-vazia">Sem itens cadastrados.</p>
-                        {% endif %}
-                    </section>
-                </div>
-                {% endblock %}
-
-            </main>
-        </div>
-    </body>
-</body>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <p class="mensagem-vazia">{{ _('Sem itens cadastrados.') }}</p>
+                    {% endif %}
+                </section>
+            </div>
+            {% endblock %}
+        </main>
+    </div>
 
 <script src="{{ url_for('static', filename='script/cliente/teste.js') }}"></script>
 <script>
     function confirmarExclusao() {
         // Exibe a caixa de confirmação
-        return confirm("Tem certeza que deseja excluir este item?");
+        return confirm("{{ _('Tem certeza que deseja excluir este item?') }}");
     }
 
     function filtrarItens() {
@@ -102,4 +98,5 @@
         });
     }
 </script>
+</body>
 </html>

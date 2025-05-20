@@ -3,138 +3,37 @@
 {% block content %}
 
 <div class="configuracoes">
-    <h1>Configurações</h1>
+    <h1>{{ _('Configurações') }}</h1>
     <!-- Status do restaurante -->
-    <p>Status atual: <strong id="status-text">{{ 'Online' if restaurante.status else 'Offline' }}</strong></p>
+    <p>{{ _('Status atual:') }} <strong id="status-text">{{ _('Online') if restaurante.status else _('Offline') }}</strong></p>
     <label class="toggle">
         <input type="checkbox" id="status-toggle" {% if restaurante.status %}checked{% endif %}>
         <span class="slider"></span>
     </label>
-
+      
+    <form action="{{ url_for('set_language') }}" method="post">
+        <label for="language">{{ _('Idioma:') }}</label>
+        <select name="language" onchange="this.form.submit()">
+            <option value="pt" {% if current_locale == 'pt' %}selected{% endif %}>{{ _('Português') }}</option>
+            <option value="en" {% if current_locale == 'en' %}selected{% endif %}>{{ _('English') }}</option>
+            <option value="es" {% if current_locale == 'es' %}selected{% endif %}>{{ _('Español') }}</option>
+        </select>
+    </form>
+    
     <!-- Formulário para enviar foto -->
     <form action="{{ url_for('upload_foto_restaurante', restaurante_id=restaurante.id) }}" method="POST" enctype="multipart/form-data" id="foto-form">
-        <label class="foto-titulo" for="foto">Foto de Perfil:</label><br>
+        <label class="foto-titulo" for="foto">{{ _('Foto de Perfil:') }}</label><br>
         <div class="foto-preview-container">
         {% if restaurante.fotoperfil %}
-            <img src="{{ url_for('static', filename='uploads/' + restaurante.fotoperfil) }}" alt="Foto preview" class="restaurante-foto">
+            <img src="{{ url_for('static', filename='uploads/' + restaurante.fotoperfil) }}" alt="{{ _('Foto preview') }}" class="restaurante-foto">
         {% else %}
-            <img src="{{ url_for('static', filename='img/restaurante/default-restaurante.png') }}" alt="Foto padrão" class="restaurante-foto">
+            <img src="{{ url_for('static', filename='img/restaurante/default-restaurante.png') }}" alt="{{ _('Foto padrão') }}" class="restaurante-foto">
         {% endif %}
         </div>
         <input class="foto-upload" type="file" name="foto" id="foto" accept="image/*" required><br>
-        <button type="submit" class="btn-upload">Enviar Foto</button>
+        <button type="submit" class="btn-upload">{{ _('Enviar Foto') }}</button>
     </form>
 </div>
-
-<style>
-    /* Contêiner de configurações */
-    .configuracoes {
-        margin: 20px auto;
-        max-width: 600px;
-        padding: 20px;
-        background-color: rgb(20, 106, 177, 0.2);
-        border-radius: 12px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
-
-    h1 {
-        font-size: 2rem;
-        color: #2c3e50;
-        margin-bottom: 20px;
-    }
-
-    /* Toggle de status */
-    .toggle {
-        position: relative;
-        display: inline-block;
-        width: 70px;
-        height: 40px;
-        margin-top: 10px;
-    }
-
-    .toggle input {
-        display: none;
-    }
-
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        transition: background-color 0.3s ease;
-        border-radius: 20px;
-    }
-
-    .slider:before {
-        position: absolute;
-        content: "";
-        height: 30px;
-        width: 30px;
-        left: 5px;
-        bottom: 5px;
-        background-color: white;
-        transition: transform 0.3s ease;
-        border-radius: 50%;
-    }
-
-    input:checked + .slider {
-        background-color: #28a745;
-    }
-
-    input:checked + .slider:before {
-        transform: translateX(30px);
-    }
-
-    /* Formulário de foto */
-    .foto-titulo {
-        font-size: 1.2rem;
-        color: #34495e;
-        margin-top: 20px;
-        display: block;
-    }
-
-    .foto-upload {
-        margin: 20px 0;
-    }
-
-    /* Botão de upload */
-    .btn-upload {
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-size: 1rem;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-        text-transform: uppercase;
-        transition: background 0.3s ease, transform 0.2s ease;
-    }
-
-    .btn-upload:hover {
-        background-color: #388E3C;
-    }
-
-    /* Pré-visualização da foto */
-    .foto-preview-container {
-        margin: 20px 0;
-        display: flex;
-        justify-content: center;
-    }
-
-    .restaurante-foto {
-        max-width: 150px;
-        max-height: 150px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border: 2px solid #ccc;
-        object-fit: cover;
-    }
-</style>
 
 <script src="{{ url_for('static', filename='script/restaurante/botao_online.js') }}"></script>
 {% endblock %}

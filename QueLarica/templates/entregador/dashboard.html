@@ -1,58 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard do Entregador</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/entregador/dashboard/style.css') }}">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ _('Dashboard do Entregador') }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/entregador/dashboard/style.css') }}" />
 </head>
 <body>
-    <body>
-        <div class="dashboard-container">
-            <!-- Barra Lateral -->
-            <aside class="sidebar">
-                <div class="sidebar-header">
-                    <h2>{{ entregador.nome }}</h2>
-                </div>
-                <nav class="sidebar-nav">
-                    <ul>
-                        <li><a href="{{ url_for('dashboard_entregador') }}">Início</a></li>      
-                        <li><a href="{{ url_for('entrega') }}">Entregas</a></li>
-                        <li><a href="#">Configurações</a></li>
-                        <li><a href="{{ url_for('logout') }}">Sair</a></li>
-                    </ul>
-                </nav>
-            </aside>
-    
-            <main class="main-content">
-                {% block content %}
-                <div class="entregador-pedidos-container">
-                    <h2>Pedidos Disponíveis</h2>
-                    {% if pedidos %}
-                        <div class="pedidos-lista">
-                            {% for pedido in pedidos %}
-                                <div class="pedido-item">
-                                    <h3>Pedido #{{ pedido.id }}</h3>
-                                    <p><strong>Restaurante:</strong> {{ pedido.restaurante.nome }}</p>
-                                    <p><strong>Endereço do Restaurante:</strong> {{ pedido.restaurante.endereco }}</p>
-                                    <p><strong>Cliente:</strong> {{ pedido.cliente.nome }}</p>
-                                    <p><strong>Endereço do Cliente:</strong> {{ pedido.cliente.endereco }}</p>
-                                    <p><strong>Total:</strong> R$ {{ "%.2f"|format(pedido.total) }}</p>
-                
-                                    <form method="POST" action="{{ url_for('aceitar_entrega') }}">
-                                        <input type="hidden" name="pedido_id" value="{{ pedido.id }}">
-                                        <button type="submit" class="pedido-aceitar">Aceitar</button>
-                                    </form>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        <p>Não há pedidos disponíveis no momento.</p>
-                    {% endif %}
-                </div>
-                {% endblock %}
-            </main>
-        </div>
-    </body>
+    <div class="dashboard-container">
+        <!-- Barra Lateral -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>{{ entregador.nome }}</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="{{ url_for('dashboard_entregador') }}">{{ _('Início') }}</a></li>      
+                    <li><a href="{{ url_for('entrega') }}">{{ _('Entregas') }}</a></li>
+                    <li><a href="#">{{ _('Configurações') }}</a></li>
+                    <li><a href="{{ url_for('logout') }}">{{ _('Sair') }}</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            {% block content %}
+            <div class="entregador-pedidos-container">
+                <h2>{{ _('Pedidos Disponíveis') }}</h2>
+                {% if pedidos %}
+                    <div class="pedidos-lista">
+                        {% for pedido in pedidos %}
+                            <div class="pedido-item">
+                                <h3>{{ _('Pedido #') }}{{ pedido.id }}</h3>
+                                <p><strong>{{ _('Restaurante:') }}</strong> {{ pedido.restaurante.nome }}</p>
+                                <p><strong>{{ _('Endereço do Restaurante:') }}</strong> {{ pedido.restaurante.endereco }}</p>
+                                <p><strong>{{ _('Cliente:') }}</strong> {{ pedido.cliente.nome }}</p>
+                                <p><strong>{{ _('Endereço do Cliente:') }}</strong> {{ pedido.cliente.endereco }}</p>
+                                <p><strong>{{ _('Total:') }}</strong> R$ {{ "%.2f"|format(pedido.total) }}</p>
+            
+                                <form method="POST" action="{{ url_for('aceitar_entrega') }}">
+                                    <input type="hidden" name="pedido_id" value="{{ pedido.id }}" />
+                                    <button type="submit" class="pedido-aceitar">{{ _('Aceitar') }}</button>
+                                </form>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>{{ _('Não há pedidos disponíveis no momento.') }}</p>
+                {% endif %}
+            </div>
+            {% endblock %}
+        </main>
+    </div>
 </body>
 </html>

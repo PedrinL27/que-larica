@@ -3,23 +3,23 @@
 {% block content %}
     {% for pedido in pedidos %}
     <div class="entrega-concluir-container">
-        <h2>Pedido #{{ pedido.id }}</h2>
-        <p><strong>Cliente:</strong> {{ pedido.cliente.nome }}</p>
-        <p><strong>Endereço do Cliente:</strong> {{ pedido.cliente.endereco }}</p>
-        <p><strong>Status:</strong> {{ pedido.status }}</p>
+        <h2>{{ _('Pedido #') }}{{ pedido.id }}</h2>
+        <p><strong>{{ _('Cliente:') }}</strong> {{ pedido.cliente.nome }}</p>
+        <p><strong>{{ _('Endereço do Cliente:') }}</strong> {{ pedido.cliente.endereco }}</p>
+        <p><strong>{{ _('Status:') }}</strong> {{ pedido.status }}</p>
     
-        <p><strong>Itens:</strong></p>
+        <p><strong>{{ _('Itens:') }}</strong></p>
         <ul>
             {% for item in pedido.itens %}
                 <li>{{ item.quantidade }}x {{ item.produto_nome }} - R$ {{ "%.2f"|format(item.subtotal) }}</li>
             {% endfor %}
         </ul>
-        <p><strong>Total:</strong> R$ {{ "%.2f"|format(pedido.total) }}</p>
+        <p><strong>{{ _('Total:') }}</strong> R$ {{ "%.2f"|format(pedido.total) }}</p>
 
-        {% if pedido.status == 'Em Transporte' %}
+        {% if pedido.status == _('Em Transporte') %}
         <form method="POST" action="{{ url_for('finalizar_entrega') }}">
             <input type="hidden" name="pedido_id" value="{{ pedido.id }}">
-            <button type="submit" class="pedido-finalizar">Finalizar Entrega</button>
+            <button type="submit" class="pedido-finalizar">{{ _('Finalizar Entrega') }}</button>
         </form>
         {% endif %}
     </div>

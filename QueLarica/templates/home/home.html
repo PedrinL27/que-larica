@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="{{ current_locale }}"></html>
 
 <head>
     <meta charset="UTF-8">
@@ -8,42 +8,54 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/home/style.css') }}">
 </head>
 
+ 
+    <form action="{{ url_for('set_language') }}" method="post">
+        <label for="language">{{ _('Idioma:') }}</label>
+        <select name="language" onchange="this.form.submit()">
+            <option value="pt" {% if current_locale == 'pt' %}selected{% endif %}>Português</option>
+            <option value="en" {% if current_locale == 'en' %}selected{% endif %}>English</option>
+            <option value="es" {% if current_locale == 'es' %}selected{% endif %}>Español</option>
+        </select>
+    </form>
+
 <body>
 
     <div id="top">
         <img src="{{ url_for('static', filename='img/home/nova_logo.png') }}" alt="Logo">
-        <p id="txt">Bem Vindo(a)!</p>
-        <button id="modo_escuro">Escuro</button>
+        <p id="txt">{{ _('Bem Vindo(a)!') }}</p>
+        <button id="modo_escuro">{{ _('Escuro') }}</button>
     </div>
+
     <div id="main">
-    <div id="main-container">
-        <div id="button-choice">
-            <button class="cliente" onclick="showForm('cliente')">Cliente</button>
-            <button class="restaurante" onclick="showForm('restaurante')">Restaurante</button>
-            <button class="entregador" onclick="showForm('entregador')">Entregador</button>
-        </div>
+        <div id="main-container">
 
-        <div id="button-return" style="display: none;">
-            <button id="return1" onclick="showForm('voltar')">
-                <img id="return" src="{{ url_for('static', filename='img/home/return.png') }}" alt="">
-            </button>
-        </div>
+            <div id="button-choice">
+                <button class="cliente" onclick="showForm('cliente')">{{ _('Cliente') }}</button>
+                <button class="restaurante" onclick="showForm('restaurante')">{{ _('Restaurante') }}</button>
+                <button class="entregador" onclick="showForm('entregador')">{{ _('Entregador') }}</button>
+            </div>
 
-        <div id="login-form" style="display: none;">
-            <div id="role-display">
-            <p id="role-text"></p>
+            <div id="button-return" style="display: none;">
+                <button id="return1" onclick="showForm('voltar')">
+                    <img id="return" src="{{ url_for('static', filename='img/home/return.png') }}" alt="">
+                </button>
             </div>
-            <div id="login">
-                <input type="email" placeholder="E-mail" id="email">
-                <input type="password" placeholder="Senha" id="password">
+
+            <div id="login-form" style="display: none;">
+                <div id="role-display">
+                    <p id="role-text"></p>
+                </div>
+                <div id="login">
+                    <input type="email" placeholder="{{ _('E-mail') }}" id="email">
+                    <input type="password" placeholder="{{ _('Senha') }}" id="password">
+                </div>
+                <div class="button-wrapper">
+                    <button id="button-loggin">{{ _('Entrar') }}</button>
+                    <button id="button-cadastro">{{ _('Cadastro') }}</button>
+                </div>
             </div>
-            <div class="button-wrapper">
-                <button id="button-loggin">Entrar</button>
-                <button id="button-cadastro">Cadastro</button>
-            </div>
+
         </div>
-        
-    </div>
     </div>
     <script src="{{ url_for('static', filename='script/home/login.js') }}"></script>
     <script src="{{ url_for('static', filename='script/home/tentativa_login.js') }}"></script>

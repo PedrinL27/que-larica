@@ -3,7 +3,7 @@
 {% block content %}
 <div class="carrinho-container">
     <div class="carrinho-header">
-        <h2>Seu Carrinho</h2>
+        <h2>{{ _('Seu Carrinho') }}</h2>
     </div>
 
     {% if itens %}
@@ -19,7 +19,7 @@
                 {% endif %}
                 <div>
                     <h3>{{ item.produto.nome }}</h3>
-                    <p>Quantidade: <strong>{{ item.quantidade }}</strong></p>
+                    <p>{{ _('Quantidade:') }} <strong>{{ item.quantidade }}</strong></p>
                 </div>
             </div>
             <div class="produto-acoes">
@@ -41,21 +41,21 @@
 
     <!-- Total e finalização -->
     <div class="carrinho-total">
-        <p>Total: <span>R$ {{ "%.2f"|format(carrinho.total) }}</span></p>
+        <p>{{ _('Total:') }} <span>R$ {{ "%.2f"|format(carrinho.total) }}</span></p>
         <form method="POST" action="{{ url_for('finalizar_pedido') }}">
             <div class="forma-pagamento">
-                <h3>Escolha a forma de pagamento</h3>
+                <h3>{{ _('Escolha a forma de pagamento') }}</h3>
                 <div class="opcoes-pagamento">
                     <label>
                         <input type="radio" name="forma_pagamento" value="cartao" required>
-                        Cartão
+                        {{ _('Cartão') }}
                     </label>
                     <label>
                         <input type="radio" name="forma_pagamento" value="pix" required>
-                        Pix
+                        {{ _('Pix') }}
                     </label>
                 </div>
-                <button type="submit" class="btn-finalizar-compra">Finalizar Compra</button>
+                <button type="submit" class="btn-finalizar-compra">{{ _('Finalizar Compra') }}</button>
             </div>
         </form>
     </div>
@@ -63,7 +63,7 @@
     {% else %}
     <!-- Mensagem de carrinho vazio -->
     <div class="carrinho-vazio">
-        <p>Seu carrinho está vazio. Adicione itens para continuar.</p>
+        <p>{{ _('Seu carrinho está vazio. Adicione itens para continuar.') }}</p>
     </div>
     {% endif %}
 </div>

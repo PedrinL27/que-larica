@@ -1,0 +1,467 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-05-20 12:17-0300\n"
+"PO-Revision-Date: 2025-05-20 11:03-0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: templates/cliente/cadastro.html:7 templates/cliente/cadastro.html:36
+msgid "Cadastro Cliente"
+msgstr "Registro de Cliente"
+
+#: templates/cliente/cadastro.html:29 templates/entregador/cadastro.html:30
+#: templates/restaurante/cadastro.html:30
+msgid "Voltar"
+msgstr "Volver"
+
+#: templates/cliente/cadastro.html:33 templates/entregador/cadastro.html:34
+#: templates/restaurante/cadastro.html:34
+msgid "Logo"
+msgstr "Logo"
+
+#: templates/cliente/cadastro.html:40 templates/entregador/cadastro.html:41
+msgid "Nome"
+msgstr "Nombre"
+
+#: templates/cliente/cadastro.html:44 templates/entregador/cadastro.html:45
+#: templates/home/home.html:49 templates/restaurante/cadastro.html:45
+msgid "E-mail"
+msgstr "Correo electrónico"
+
+#: templates/cliente/cadastro.html:48 templates/entregador/cadastro.html:49
+#: templates/home/home.html:50 templates/restaurante/cadastro.html:49
+msgid "Senha"
+msgstr "Contraseña"
+
+#: templates/cliente/cadastro.html:52 templates/entregador/cadastro.html:53
+msgid "CPF"
+msgstr ""
+"DNI / NIF\"  # CPF é um documento brasileiro, então aqui usei uma "
+"equivalência geral, pode ajustar conforme públic"
+
+#: templates/cliente/cadastro.html:56 templates/restaurante/cadastro.html:57
+msgid "Endereço"
+msgstr "Dirección"
+
+#: templates/cliente/cadastro.html:59 templates/entregador/cadastro.html:56
+#: templates/restaurante/cadastro.html:60
+msgid "Cadastrar"
+msgstr "Registrar"
+
+#: templates/cliente/cardapio.html:5
+msgid "Cardápio de"
+msgstr "Menú de"
+
+#: templates/cliente/cardapio.html:10 templates/restaurante/dashboard.html:34
+msgid "Pesquisar"
+msgstr "Buscar"
+
+#: templates/cliente/cardapio.html:28
+msgid "Adicionar ao Carrinho"
+msgstr "Agregar al Carrito"
+
+#: templates/cliente/cardapio.html:35
+msgid "Este restaurante ainda não possui produtos no cardápio."
+msgstr "Este restaurante aún no tiene productos en el menú."
+
+#: templates/cliente/carrinho.html:6
+msgid "Seu Carrinho"
+msgstr "Tu Carrito"
+
+#: templates/cliente/carrinho.html:22
+msgid "Quantidade:"
+msgstr "Cantidad:"
+
+#: templates/cliente/carrinho.html:44 templates/cliente/pedidos.html:19
+#: templates/entregador/dashboard.html:39 templates/entregador/entrega.html:17
+#: templates/restaurante/pedidos.html:19
+msgid "Total:"
+msgstr "Total:"
+
+#: templates/cliente/carrinho.html:47
+msgid "Escolha a forma de pagamento"
+msgstr "Elige la forma de pago"
+
+#: templates/cliente/carrinho.html:51
+msgid "Cartão"
+msgstr "Tarjeta"
+
+#: templates/cliente/carrinho.html:55
+msgid "Pix"
+msgstr ""
+"Pix\"  # Pix é um sistema brasileiro; se não fizer sentido, pode ser "
+"substituído por \"Transferencia"
+
+#: templates/cliente/carrinho.html:58
+msgid "Finalizar Compra"
+msgstr "Finalizar Compra"
+
+#: templates/cliente/carrinho.html:66
+msgid "Seu carrinho está vazio. Adicione itens para continuar."
+msgstr "Tu carrito está vacío. Agrega productos para continuar."
+
+#: templates/cliente/dashboard.html:7 templates/restaurante/dashboard.html:6
+msgid "Dashboard"
+msgstr "Panel de Control"
+
+#: templates/cliente/dashboard.html:20 templates/entregador/dashboard.html:18
+#: templates/restaurante/dashboard.html:19
+msgid "Início"
+msgstr "Inicio"
+
+#: templates/cliente/dashboard.html:21
+msgid "Carrinho"
+msgstr "Carrito"
+
+#: templates/cliente/dashboard.html:22 templates/restaurante/dashboard.html:21
+msgid "Pedidos"
+msgstr "Pedidos"
+
+#: templates/cliente/dashboard.html:23 templates/entregador/dashboard.html:20
+#: templates/restaurante/configuracoes.html:6
+#: templates/restaurante/dashboard.html:22
+msgid "Configurações"
+msgstr "Configuraciones"
+
+#: templates/cliente/dashboard.html:24 templates/entregador/dashboard.html:21
+#: templates/restaurante/dashboard.html:23
+msgid "Sair"
+msgstr "Salir"
+
+#: templates/cliente/dashboard.html:33
+msgid "Restaurantes Online"
+msgstr "Restaurantes en Línea"
+
+#: templates/cliente/dashboard.html:39
+msgid "Foto de"
+msgstr "Foto de"
+
+#: templates/cliente/dashboard.html:41
+#: templates/restaurante/configuracoes.html:30
+msgid "Foto padrão"
+msgstr "Foto predeterminada"
+
+#: templates/cliente/dashboard.html:45 templates/restaurante/pedidos.html:9
+msgid "Endereço:"
+msgstr "Dirección:"
+
+#: templates/cliente/dashboard.html:47
+msgid "Ver Cardápio"
+msgstr "Ver Menú"
+
+#: templates/cliente/dashboard.html:52
+msgid "Não há restaurantes online no momento."
+msgstr "No hay restaurantes en línea en este momento."
+
+#: templates/cliente/pedidos.html:7 templates/entregador/dashboard.html:34
+#: templates/entregador/entrega.html:6
+msgid "Pedido #"
+msgstr "Pedido #"
+
+#: templates/cliente/pedidos.html:8
+msgid "Data:"
+msgstr "Fecha:"
+
+#: templates/cliente/pedidos.html:9 templates/entregador/dashboard.html:35
+msgid "Restaurante:"
+msgstr "Restaurante:"
+
+#: templates/cliente/pedidos.html:10 templates/entregador/entrega.html:9
+#: templates/restaurante/pedidos.html:10
+msgid "Status:"
+msgstr "Estado:"
+
+#: templates/cliente/pedidos.html:12 templates/entregador/entrega.html:11
+#: templates/restaurante/pedidos.html:12
+msgid "Itens:"
+msgstr "Artículos:"
+
+#: templates/cliente/pedidos.html:23
+msgid "Você não tem pedidos no momento."
+msgstr "No tienes pedidos en este momento."
+
+#: templates/cliente/pix.html:5
+msgid "Pagamento via Pix"
+msgstr "Pago vía Pix"
+
+#: templates/cliente/pix.html:6
+msgid "Use o QR Code abaixo para realizar o pagamento."
+msgstr "Usa el código QR abajo para realizar el pago."
+
+#: templates/cliente/pix.html:8
+msgid "QR Code Pix"
+msgstr "Código QR Pix"
+
+#: templates/cliente/pix.html:11
+msgid "Fiz o pagamento"
+msgstr "He realizado el pago"
+
+#: templates/entregador/cadastro.html:7 templates/entregador/cadastro.html:37
+msgid "Cadastro Entregador"
+msgstr "Registro de Repartidor"
+
+#: templates/entregador/dashboard.html:6
+msgid "Dashboard do Entregador"
+msgstr "Panel de Control del Repartidor"
+
+#: templates/entregador/dashboard.html:19
+msgid "Entregas"
+msgstr "Entregas"
+
+#: templates/entregador/dashboard.html:29
+msgid "Pedidos Disponíveis"
+msgstr "Pedidos Disponibles"
+
+#: templates/entregador/dashboard.html:36
+msgid "Endereço do Restaurante:"
+msgstr "Dirección del Restaurante:"
+
+#: templates/entregador/dashboard.html:37 templates/entregador/entrega.html:7
+#: templates/restaurante/pedidos.html:8
+msgid "Cliente:"
+msgstr "Cliente:"
+
+#: templates/entregador/dashboard.html:38 templates/entregador/entrega.html:8
+msgid "Endereço do Cliente:"
+msgstr "Dirección del Cliente:"
+
+#: templates/entregador/dashboard.html:43
+msgid "Aceitar"
+msgstr "Aceptar"
+
+#: templates/entregador/dashboard.html:49
+msgid "Não há pedidos disponíveis no momento."
+msgstr "No hay pedidos disponibles en este momento."
+
+#: templates/entregador/entrega.html:19
+msgid "Em Transporte"
+msgstr "En Transporte"
+
+#: templates/entregador/entrega.html:22
+msgid "Finalizar Entrega"
+msgstr "Finalizar Entrega"
+
+#: templates/home/home.html:13 templates/restaurante/configuracoes.html:15
+msgid "Idioma:"
+msgstr "Idioma:"
+
+#: templates/home/home.html:25
+msgid "Bem Vindo(a)!"
+msgstr "¡Bienvenido(a)!"
+
+#: templates/home/home.html:26
+msgid "Escuro"
+msgstr "Oscuro"
+
+#: templates/home/home.html:33
+msgid "Cliente"
+msgstr "Cliente"
+
+#: templates/home/home.html:34
+msgid "Restaurante"
+msgstr "Restaurante"
+
+#: templates/home/home.html:35
+msgid "Entregador"
+msgstr "Repartidor"
+
+#: templates/home/home.html:53
+msgid "Entrar"
+msgstr "Entrar"
+
+#: templates/home/home.html:54
+msgid "Cadastro"
+msgstr "Registro"
+
+#: templates/restaurante/cadastrar_item.html:4
+msgid "Cadastrar Novo Produto"
+msgstr "Registrar Nuevo Producto"
+
+#: templates/restaurante/cadastrar_item.html:12
+msgid "Nome do Produto:"
+msgstr "Nombre del Producto:"
+
+#: templates/restaurante/cadastrar_item.html:13
+msgid "Digite o nome do produto"
+msgstr "Escribe el nombre del producto"
+
+#: templates/restaurante/cadastrar_item.html:17
+#: templates/restaurante/editar.html:13
+msgid "Descrição:"
+msgstr "Descripción:"
+
+#: templates/restaurante/cadastrar_item.html:18
+msgid "Descreva o produto"
+msgstr "Describe el producto"
+
+#: templates/restaurante/cadastrar_item.html:22
+msgid "Preço:"
+msgstr "Precio:"
+
+#: templates/restaurante/cadastrar_item.html:23
+msgid "Digite o preço"
+msgstr "Escribe el precio"
+
+#: templates/restaurante/cadastrar_item.html:27
+#: templates/restaurante/editar.html:23
+msgid "Imagem (opcional):"
+msgstr "Imagen (opcional):"
+
+#: templates/restaurante/cadastrar_item.html:31
+msgid "Cadastrar Produto"
+msgstr "Registrar Producto"
+
+#: templates/restaurante/cadastro.html:7 templates/restaurante/cadastro.html:37
+msgid "Cadastro Restaurante"
+msgstr "Registro de Restaurante"
+
+#: templates/restaurante/cadastro.html:41
+msgid "Nome do Restaurante"
+msgstr "Nombre del Restaurante"
+
+#: templates/restaurante/cadastro.html:53
+msgid "CNPJ"
+msgstr "NIF / CIF\"  # Equivalente espanhol para CNP"
+
+#: templates/restaurante/configuracoes.html:8
+msgid "Status atual:"
+msgstr "Estado actual:"
+
+#: templates/restaurante/configuracoes.html:8
+msgid "Online"
+msgstr "En línea"
+
+#: templates/restaurante/configuracoes.html:8
+msgid "Offline"
+msgstr "Desconectado"
+
+#: templates/restaurante/configuracoes.html:17
+msgid "Português"
+msgstr "Portugués"
+
+#: templates/restaurante/configuracoes.html:18
+msgid "English"
+msgstr "Inglés"
+
+#: templates/restaurante/configuracoes.html:19
+msgid "Español"
+msgstr "Español"
+
+#: templates/restaurante/configuracoes.html:25
+msgid "Foto de Perfil:"
+msgstr "Foto de Perfil:"
+
+#: templates/restaurante/configuracoes.html:28
+msgid "Foto preview"
+msgstr "Vista previa de la foto"
+
+#: templates/restaurante/configuracoes.html:34
+msgid "Enviar Foto"
+msgstr "Enviar Foto"
+
+#: templates/restaurante/dashboard.html:20
+#, fuzzy
+msgid "Cadastrar Item"
+msgstr "Registrar"
+
+#: templates/restaurante/dashboard.html:32
+msgid "Itens do Menu"
+msgstr ""
+
+#: templates/restaurante/dashboard.html:57
+#, fuzzy
+msgid "Editar"
+msgstr "Aceptar"
+
+#: templates/restaurante/dashboard.html:61
+#, fuzzy
+msgid "Excluir"
+msgstr "Oscuro"
+
+#: templates/restaurante/dashboard.html:68
+msgid "Sem itens cadastrados."
+msgstr ""
+
+#: templates/restaurante/dashboard.html:80
+msgid "Tem certeza que deseja excluir este item?"
+msgstr ""
+
+#: templates/restaurante/editar.html:4
+msgid "Editar Produto"
+msgstr "Editar Producto"
+
+#: templates/restaurante/editar.html:8
+msgid "Nome:"
+msgstr "Nombre:"
+
+#: templates/restaurante/editar.html:18
+msgid "Preço (R$):"
+msgstr "Precio (R$):\"  # Pode ajustar o símbolo da moeda conforme o context"
+
+#: templates/restaurante/editar.html:29
+msgid "Imagem atual:"
+msgstr "Imagen actual:"
+
+#: templates/restaurante/editar.html:30
+msgid "Imagem atual"
+msgstr "Imagen actual"
+
+#: templates/restaurante/editar.html:35
+msgid "Salvar Alterações"
+msgstr "Guardar Cambios"
+
+#: templates/restaurante/editar.html:36
+msgid "Cancelar"
+msgstr "Cancelar"
+
+#: templates/restaurante/pedidos.html:7
+msgid "Pedido"
+msgstr "Pedido"
+
+#: templates/restaurante/pedidos.html:25
+msgid "Confirmar"
+msgstr "Confirmar"
+
+#: templates/restaurante/pedidos.html:29
+msgid "Recusar"
+msgstr "Rechazar"
+
+#: templates/restaurante/pedidos.html:38
+msgid "Enviar Para Entrega"
+msgstr "Enviar para Entrega"
+
+#: templates/restaurante/pedidos.html:46
+msgid "Não há pedidos pendentes."
+msgstr "No hay pedidos pendientes."
+
+#~ msgid "Cadastrar Item"
+#~ msgstr "Registrar Ítem"
+
+#~ msgid "Itens do Menu"
+#~ msgstr "Ítems del Menú"
+
+#~ msgid "Editar"
+#~ msgstr "Editar"
+
+#~ msgid "Excluir"
+#~ msgstr "Eliminar"
+
+#~ msgid "Sem itens cadastrados."
+#~ msgstr "No hay ítems registrados."
+
+#~ msgid "Tem certeza que deseja excluir este item?"
+#~ msgstr "¿Estás seguro que quieres eliminar este ítem?"
+

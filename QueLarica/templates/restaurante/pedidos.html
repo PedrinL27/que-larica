@@ -4,29 +4,29 @@
     {% if pedidos %}
         {% for detalhes in pedidos %}
         <div class="pedidos-container">
-            <h2>Pedido #{{ detalhes.pedido.id }}</h2>
-            <p><strong>Cliente:</strong> {{ detalhes.cliente.nome }}</p>
-            <p><strong>Endereço:</strong> {{ detalhes.cliente.endereco }}</p>
-            <p><strong>Status:</strong> {{ detalhes.pedido.status }}</p>
+            <h2>{{ _('Pedido') }} #{{ detalhes.pedido.id }}</h2>
+            <p><strong>{{ _('Cliente:') }}</strong> {{ detalhes.cliente.nome }}</p>
+            <p><strong>{{ _('Endereço:') }}</strong> {{ detalhes.cliente.endereco }}</p>
+            <p><strong>{{ _('Status:') }}</strong> {{ _(detalhes.pedido.status) }}</p>
 
-            <h4>Itens:</h4>
+            <h4>{{ _('Itens:') }}</h4>
             <ul>
                 {% for item in detalhes.itens %}
                     <li>{{ item.quantidade }}x {{ item.produto_nome }} - R$ {{ "%.2f"|format(item.subtotal) }}</li>
                 {% endfor %}
             </ul>
 
-            <p><strong>Total:</strong> R$ {{ "%.2f"|format(detalhes.total) }}</p>
+            <p><strong>{{ _('Total:') }}</strong> R$ {{ "%.2f"|format(detalhes.total) }}</p>
 
             {% if detalhes.pedido.status == 'Aguardando Confirmação' %}
                 <div class="pedido-actions">
                     <form method="POST" action="{{ url_for('aceitar_pedido') }}">
                         <input type="hidden" name="pedido_id" value="{{ detalhes.pedido.id }}">
-                        <button type="submit" class="pedido-aceitar">Confirmar</button>
+                        <button type="submit" class="pedido-aceitar">{{ _('Confirmar') }}</button>
                     </form>
                     <form method="POST" action="{{ url_for('recusar_pedido') }}">
-                            <input type="hidden" name="pedido_id" value="{{ detalhes.pedido.id }}">
-                            <button type="submit" class="pedido-recusar">Recusar</button>
+                        <input type="hidden" name="pedido_id" value="{{ detalhes.pedido.id }}">
+                        <button type="submit" class="pedido-recusar">{{ _('Recusar') }}</button>
                     </form>
                 </div>
             {% endif %}
@@ -35,15 +35,16 @@
                 <div class="entrega-actions">
                     <form method="POST" action="{{ url_for('enviar_para_entrega') }}">
                         <input type="hidden" name="pedido_id" value="{{ detalhes.pedido.id }}">
-                        <button type="submit" class="enviar-entrega">Enviar Para Entrega</button>
+                        <button type="submit" class="enviar-entrega">{{ _('Enviar Para Entrega') }}</button>
                     </form>
                 </div>
-            {% endif%}
+            {% endif %}
         </div>
         {% endfor %}
                 
     {% else %}
-        <p>Não há pedidos pendentes.</p>
+        <p>{{ _('Não há pedidos pendentes.') }}</p>
     {% endif %}
     
 {% endblock %}
+
