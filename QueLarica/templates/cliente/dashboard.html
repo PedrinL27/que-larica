@@ -4,60 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>{{ _('Dashboard') }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/cliente/dashboard/style.css') }}">
 </head>
 
 <body>
-    <body>
-        <div class="dashboard-container">
-            <!-- Barra Lateral -->
-            <aside class="sidebar">
-                <div class="sidebar-header">
-                    <h2>{{ cliente.nome }}</h2>
-                </div>
-                <nav class="sidebar-nav">
-                    <ul>
-                        <li><a href="{{ url_for('dashboard_cliente') }}">Início</a></li>
-                        <li><a href="{{ url_for('carrinho') }}">Carrinho</a></li>        
-                        <li><a href="{{ url_for('meus_pedidos')}}">Pedidos</a></li>
-                        <li><a href="#">Configurações</a></li>
-                        <li><a href="{{ url_for('logout') }}">Sair</a></li>
-                    </ul>
-                </nav>
-            </aside>
-    
-            <!-- Conteúdo Principal -->
-            <main class="main-content">
-                {% block content %}
-                <div class="restaurantes-container">
-                    <h1>Restaurantes Online</h1>
-                    {% if restaurantes %}
-                        <div class="restaurantes-grid">
-                            {% for restaurante in restaurantes %}
-                            <div class="restaurante-card">
-                                {% if restaurante.fotoperfil %}
-                                    <img src="{{ url_for('static', filename='uploads/' + restaurante.fotoperfil) }}" alt="Foto de {{ restaurante.nome }}" class="restaurante-foto">
-                                {% else %}
-                                    <img src="{{ url_for('static', filename='img/restaurante/default-restaurante.png') }}" alt="Foto padrão" class="restaurante-foto">
-                                {% endif %}
-                                <div class="restaurante-info">
-                                    <h2>{{ restaurante.nome }}</h2>
-                                    <p class="endereco"><strong>Endereço:</strong> {{ restaurante.endereco }}</p>
-                                </div>
-                                <a href="{{ url_for('cardapio', restaurante_id=restaurante.id) }}" class="ver-cardapio-btn">Ver Cardápio</a>
+    <div class="dashboard-container">
+        <!-- Barra Lateral -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>{{ cliente.nome }}</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="{{ url_for('dashboard_cliente') }}">{{ _('Início') }}</a></li>
+                    <li><a href="{{ url_for('carrinho') }}">{{ _('Carrinho') }}</a></li>        
+                    <li><a href="{{ url_for('meus_pedidos') }}">{{ _('Pedidos') }}</a></li>
+                    <li><a href="#">{{ _('Configurações') }}</a></li>
+                    <li><a href="{{ url_for('logout') }}">{{ _('Sair') }}</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            {% block content %}
+            <div class="restaurantes-container">
+                <h1>{{ _('Restaurantes Online') }}</h1>
+                {% if restaurantes %}
+                    <div class="restaurantes-grid">
+                        {% for restaurante in restaurantes %}
+                        <div class="restaurante-card">
+                            {% if restaurante.fotoperfil %}
+                                <img src="{{ url_for('static', filename='uploads/' + restaurante.fotoperfil) }}" alt="{{ _('Foto de') }} {{ restaurante.nome }}" class="restaurante-foto">
+                            {% else %}
+                                <img src="{{ url_for('static', filename='img/restaurante/default-restaurante.png') }}" alt="{{ _('Foto padrão') }}" class="restaurante-foto">
+                            {% endif %}
+                            <div class="restaurante-info">
+                                <h2>{{ restaurante.nome }}</h2>
+                                <p class="endereco"><strong>{{ _('Endereço:') }}</strong> {{ restaurante.endereco }}</p>
                             </div>
-                            {% endfor %}
+                            <a href="{{ url_for('cardapio', restaurante_id=restaurante.id) }}" class="ver-cardapio-btn">{{ _('Ver Cardápio') }}</a>
                         </div>
-                    {% else %}
-                        <p class="mensagem-vazia">Não há restaurantes online no momento.</p>
-                    {% endif %}
-                </div>
-                {% endblock %}
-            </main>
-        </div>
-    </body>
-</body>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="mensagem-vazia">{{ _('Não há restaurantes online no momento.') }}</p>
+                {% endif %}
+            </div>
+            {% endblock %}
+        </main>
+    </div>
 
 <script>
     function filtrarItens() {
@@ -78,4 +75,5 @@
         });
     }
 </script>
+</body>
 </html>

@@ -2,13 +2,13 @@
 
 {% block content %}
 <div class="pix-container">
-    <h2>Pagamento via Pix</h2>
-    <p>Use o QR Code abaixo para realizar o pagamento.</p>
+    <h2>{{ _('Pagamento via Pix') }}</h2>
+    <p>{{ _('Use o QR Code abaixo para realizar o pagamento.') }}</p>
     <div class="pix-qrcode">
-        <img src="{{ url_for('static', filename='img/cliente/qrcode.png') }}" alt="QR Code Pix" class="qrcode-img">
+        <img src="{{ url_for('static', filename='img/cliente/qrcode.png') }}" alt="{{ _('QR Code Pix') }}" class="qrcode-img">
     </div>
     <form method="POST" class="payment-form">
-        <button type="submit" class="btn-confirmar-pagamento">Fiz o pagamento</button>
+        <button type="submit" class="btn-confirmar-pagamento">{{ _('Fiz o pagamento') }}</button>
     </form>
 </div>
 {% endblock %}

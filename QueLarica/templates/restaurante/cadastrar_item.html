@@ -1,7 +1,7 @@
 {% extends 'restaurante/dashboard.html' %}
 {% block content %}
 <div class="form-container">
-    <h1>Cadastrar Novo Produto</h1>
+    <h1>{{ _('Cadastrar Novo Produto') }}</h1>
 
     {% if error_message %}
         <div class="error-message">{{ error_message }}</div>
@@ -9,27 +9,26 @@
 
     <form class="formulario" method="POST" enctype="multipart/form-data">
         <div class="form-group">
-            <p><label for="nome">Nome do Produto:</label></p>
-            <input type="text" name="nome" id="nome" placeholder="Digite o nome do produto" required>
+            <p><label for="nome">{{ _('Nome do Produto:') }}</label></p>
+            <input type="text" name="nome" id="nome" placeholder="{{ _('Digite o nome do produto') }}" required>
         </div>
 
         <div class="form-group">
-            <p><label for="descricao">Descrição:</label></p>
-            <textarea name="descricao" id="descricao" placeholder="Descreva o produto" required></textarea>
+            <p><label for="descricao">{{ _('Descrição:') }}</label></p>
+            <textarea name="descricao" id="descricao" placeholder="{{ _('Descreva o produto') }}" required></textarea>
         </div>
 
         <div class="form-group">
-            <p><label for="preco">Preço:</label></p>
-            <input type="number" step="0.01" name="preco" id="preco" placeholder="Digite o preço" required>
+            <p><label for="preco">{{ _('Preço:') }}</label></p>
+            <input type="number" step="0.01" name="preco" id="preco" placeholder="{{ _('Digite o preço') }}" required>
         </div>
 
         <div class="form-group">
-            <p><label for="imagem">Imagem (opcional):</label></p>
+            <p><label for="imagem">{{ _('Imagem (opcional):') }}</label></p>
             <input type="file" name="imagem" id="imagem">
         </div>
 
-        <button type="submit" class="button">Cadastrar Produto</button>
+        <button type="submit" class="button">{{ _('Cadastrar Produto') }}</button>
     </form>
 </div>
 {% endblock %}
-

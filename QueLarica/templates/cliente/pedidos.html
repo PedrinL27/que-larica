@@ -4,23 +4,23 @@
 {% if pedidos %}
     {% for pedido in pedidos %}
     <div class="pedidos-container">
-        <h2>Pedido #{{ pedido.id }}</h2>
-        <p><strong>Data:</strong> {{ pedido.pedido.data_pedido_formatada }}</p>
-        <p><strong>Restaurante:</strong> {{ pedido.pedido.restaurante.nome }}</p>
-        <p><strong>Status:</strong> {{ pedido.status }}</p>
+        <h2>{{ _('Pedido #') }}{{ pedido.id }}</h2>
+        <p><strong>{{ _('Data:') }}</strong> {{ pedido.pedido.data_pedido_formatada }}</p>
+        <p><strong>{{ _('Restaurante:') }}</strong> {{ pedido.pedido.restaurante.nome }}</p>
+        <p><strong>{{ _('Status:') }}</strong> {{ pedido.status }}</p>
         
-        <p><strong>Itens:</strong></p>
+        <p><strong>{{ _('Itens:') }}</strong></p>
         <ul>
             {% for item in pedido.itens %}
                 <li>{{ item.quantidade }}x {{ item.produto_nome }} - R$ {{ "%.2f"|format(item.subtotal) }}</li>
             {% endfor %}
         </ul>
 
-        <p><strong>Total:</strong> R$ {{ "%.2f"|format(pedido.total) }}</p>
+        <p><strong>{{ _('Total:') }}</strong> R$ {{ "%.2f"|format(pedido.total) }}</p>
     </div>
     {% endfor %}
 {% else %}
-    <p class="sem-pedidos">Você não tem pedidos no momento.</p>
+    <p class="sem-pedidos">{{ _('Você não tem pedidos no momento.') }}</p>
 {% endif %}
 
 {% endblock %}

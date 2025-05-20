@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
+from flask_babel import Babel, get_locale
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 from flask_migrate import Migrate
@@ -9,6 +10,30 @@ import os
 
 app = Flask(__name__)
 app.secret_key = 'chave_secreta_25'
+
+# Configuração do Babel
+app.config['BABEL_DEFAULT_LOCALE'] = 'pt'
+app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
+
+# Define qual idioma usar com base na sessão
+def get_locale():
+    return session.get('lang', 'pt')
+
+# Cria o Babel passando a função get_locale
+babel = Babel(app, locale_selector=get_locale)
+
+# Injeta o idioma atual nos templates
+@app.context_processor
+def inject_locale():
+    return dict(current_locale=session.get('lang', 'pt'))
+
+# Rota para definir idioma
+@app.route('/set_language', methods=['POST'])
+def set_language():
+    lang = request.form.get('language')
+    session['lang'] = lang
+    return redirect(request.referrer)
+
 
 # Configuração do banco de dados SQLite
 basedir = os.path.abspath(os.path.dirname(__file__))
