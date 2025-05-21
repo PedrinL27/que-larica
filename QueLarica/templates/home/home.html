@@ -8,22 +8,28 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/home/style.css') }}">
 </head>
 
- 
-    <form action="{{ url_for('set_language') }}" method="post">
-        <label for="language">{{ _('Idioma:') }}</label>
-        <select name="language" onchange="this.form.submit()">
-            <option value="pt" {% if current_locale == 'pt' %}selected{% endif %}>Português</option>
-            <option value="en" {% if current_locale == 'en' %}selected{% endif %}>English</option>
-            <option value="es" {% if current_locale == 'es' %}selected{% endif %}>Español</option>
-        </select>
-    </form>
-
 <body>
 
     <div id="top">
         <img src="{{ url_for('static', filename='img/home/nova_logo.png') }}" alt="Logo">
         <p id="txt">{{ _('Bem Vindo(a)!') }}</p>
-        <button id="modo_escuro">{{ _('Escuro') }}</button>
+        
+        <div class="language-selector">
+        <button type="button" class="language-button" onclick="toggleDropdown()">🌍</button>
+        <div class="dropdown" id="languageDropdown">
+            <form action="{{ url_for('set_language') }}" method="post">
+                <button type="submit" name="language" value="pt" class="dropdown-item">
+                    <img src="https://flagcdn.com/w20/br.png" alt="Português"> pt
+                </button>
+                <button type="submit" name="language" value="en" class="dropdown-item">
+                    <img src="https://flagcdn.com/w20/us.png" alt="English"> en
+                </button>
+                <button type="submit" name="language" value="es" class="dropdown-item">
+                    <img src="https://flagcdn.com/w20/es.png" alt="Español"> es
+                </button>
+            </form>
+        </div>
+        </div>
     </div>
 
     <div id="main">
@@ -59,7 +65,14 @@
     </div>
     <script src="{{ url_for('static', filename='script/home/login.js') }}"></script>
     <script src="{{ url_for('static', filename='script/home/tentativa_login.js') }}"></script>
-    
+    <script src="{{ url_for('static', filename='script/home/seletor.js') }}"></script>
+    <script>
+    const translations = {
+        cliente: "{{ _('Cliente') }}",
+        restaurante: "{{ _('Restaurante') }}",
+        entregador: "{{ _('Entregador') }}"
+    };
+    </script>
 </body>
 </html>
 

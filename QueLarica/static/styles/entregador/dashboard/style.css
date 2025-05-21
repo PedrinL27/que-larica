@@ -207,3 +207,66 @@ body, html {
 .entrega-concluir-container .pedido-finalizar:hover {
     background-color: #138496;
 }
+
+.language-selector {
+    display: inline-block;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 32px;
+    z-index: 1000;
+}
+
+.language-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+    padding: 0;
+}
+
+.dropdown {
+    margin-top: 30px;
+    right: 30px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    position: absolute;
+    right: 0;
+    margin-top: 10px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    z-index: 10001;
+}
+
+.dropdown.show {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown-item img {
+    width: 20px;
+    height: 14px;
+}
+

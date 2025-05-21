@@ -16,7 +16,7 @@
         </ul>
         <p><strong>{{ _('Total:') }}</strong> R$ {{ "%.2f"|format(pedido.total) }}</p>
 
-        {% if pedido.status == _('Em Transporte') %}
+        {% if pedido.status == 'Em Transporte' %}
         <form method="POST" action="{{ url_for('finalizar_entrega') }}">
             <input type="hidden" name="pedido_id" value="{{ pedido.id }}">
             <button type="submit" class="pedido-finalizar">{{ _('Finalizar Entrega') }}</button>

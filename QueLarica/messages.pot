@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-05-20 12:17-0300\n"
+"POT-Creation-Date: 2025-05-20 20:11-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,12 +36,12 @@ msgid "Nome"
 msgstr ""
 
 #: templates/cliente/cadastro.html:44 templates/entregador/cadastro.html:45
-#: templates/home/home.html:49 templates/restaurante/cadastro.html:45
+#: templates/home/home.html:55 templates/restaurante/cadastro.html:45
 msgid "E-mail"
 msgstr ""
 
 #: templates/cliente/cadastro.html:48 templates/entregador/cadastro.html:49
-#: templates/home/home.html:50 templates/restaurante/cadastro.html:49
+#: templates/home/home.html:56 templates/restaurante/cadastro.html:49
 msgid "Senha"
 msgstr ""
 
@@ -241,43 +241,31 @@ msgstr ""
 msgid "Não há pedidos disponíveis no momento."
 msgstr ""
 
-#: templates/entregador/entrega.html:19
-msgid "Em Transporte"
-msgstr ""
-
 #: templates/entregador/entrega.html:22
 msgid "Finalizar Entrega"
 msgstr ""
 
-#: templates/home/home.html:13 templates/restaurante/configuracoes.html:15
-msgid "Idioma:"
-msgstr ""
-
-#: templates/home/home.html:25
+#: templates/home/home.html:15
 msgid "Bem Vindo(a)!"
 msgstr ""
 
-#: templates/home/home.html:26
-msgid "Escuro"
-msgstr ""
-
-#: templates/home/home.html:33
+#: templates/home/home.html:39 templates/home/home.html:72
 msgid "Cliente"
 msgstr ""
 
-#: templates/home/home.html:34
+#: templates/home/home.html:40 templates/home/home.html:73
 msgid "Restaurante"
 msgstr ""
 
-#: templates/home/home.html:35
+#: templates/home/home.html:41 templates/home/home.html:74
 msgid "Entregador"
 msgstr ""
 
-#: templates/home/home.html:53
+#: templates/home/home.html:59
 msgid "Entrar"
 msgstr ""
 
-#: templates/home/home.html:54
+#: templates/home/home.html:60
 msgid "Cadastro"
 msgstr ""
 
@@ -341,6 +329,10 @@ msgstr ""
 
 #: templates/restaurante/configuracoes.html:8
 msgid "Offline"
+msgstr ""
+
+#: templates/restaurante/configuracoes.html:15
+msgid "Idioma:"
 msgstr ""
 
 #: templates/restaurante/configuracoes.html:17
@@ -420,7 +412,8 @@ msgid "Cancelar"
 msgstr ""
 
 #: templates/restaurante/pedidos.html:7
-msgid "Pedido"
+#, python-format
+msgid "Pedido nº %(id)s"
 msgstr ""
 
 #: templates/restaurante/pedidos.html:25

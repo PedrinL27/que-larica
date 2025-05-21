@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+
 html{
         font-family: 'Montserrat', sans-serif;
     }
@@ -34,7 +37,6 @@ html{
     margin-left: 150px;
 }
 img {
-    
     margin-left: 10px;
     width: 200px;
     height: auto;
@@ -44,6 +46,7 @@ img {
     margin-top: 30px;
     font-weight: bold;
     font-size: 30px;
+    transition: background-color 0.7s ease;
     background: rgba(163, 163, 163, 0.644);
     border-radius: 30px;
     position: absolute;
@@ -78,6 +81,7 @@ img {
 }
 
 .cliente {
+    font-size: 18px;
     width: 450px;
     height: 80px;
     margin-bottom: 20px;
@@ -90,6 +94,7 @@ img {
 }
 
 .restaurante {
+    font-size: 18px;
     width: 450px;
     height: 80px;
     margin: 20px;
@@ -101,6 +106,7 @@ img {
 }
 
 .entregador {
+    font-size: 18px;
     width: 450px;
     height: 80px;
     margin: 20px;
@@ -112,7 +118,7 @@ img {
 }
 
 .cliente:hover {
-    background-color: rgb(0, 158, 0);
+    background-color: rgba(76, 175, 80);
     color: rgb(255, 255, 255);
     cursor: pointer;
     transition: 0.2s ease-in-out;
@@ -120,7 +126,7 @@ img {
 }
 
 .entregador:hover {
-    background-color: rgb(211, 235, 0);
+    background-color: #FF9800;
     color: rgb(0, 0, 0);
     cursor: pointer;
     transition: 0.2s ease-in-out;
@@ -128,7 +134,7 @@ img {
 }
 
 .restaurante:hover {
-    background-color: rgb(0, 17, 255);
+    background-color: rgba(33, 150, 243);
     color: rgb(255, 255, 255);
     cursor: pointer;
     transition: 0.2s ease-in-out;
@@ -213,6 +219,9 @@ img {
 }
 
 #txt {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 62px;
     font-weight: bold;
 }
@@ -220,4 +229,77 @@ img {
     font-size: 50px;
     height: 0px;
     margin-bottom: 90px;
+}
+
+.language-selector {
+    display: inline-block;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 32px;
+    z-index: 1000;
+}
+
+.language-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+    padding: 0;
+}
+
+.dropdown {
+    margin-top: 30px;
+    right: 30px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    position: absolute;
+    right: 0;
+    margin-top: 10px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    z-index: 10001;
+}
+
+.dropdown.show {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown-item img {
+    width: 20px;
+    height: 14px;
+}
+
+.fade {
+    transition: opacity 0.7s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.fade.show {
+    opacity: 1;
+    visibility: visible;
 }

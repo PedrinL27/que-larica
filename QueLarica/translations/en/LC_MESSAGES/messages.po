@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-05-20 12:17-0300\n"
+"POT-Creation-Date: 2025-05-20 20:11-0300\n"
 "PO-Revision-Date: 2025-05-20 11:03-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -37,12 +37,12 @@ msgid "Nome"
 msgstr "Name"
 
 #: templates/cliente/cadastro.html:44 templates/entregador/cadastro.html:45
-#: templates/home/home.html:49 templates/restaurante/cadastro.html:45
+#: templates/home/home.html:55 templates/restaurante/cadastro.html:45
 msgid "E-mail"
 msgstr "Email"
 
 #: templates/cliente/cadastro.html:48 templates/entregador/cadastro.html:49
-#: templates/home/home.html:50 templates/restaurante/cadastro.html:49
+#: templates/home/home.html:56 templates/restaurante/cadastro.html:49
 msgid "Senha"
 msgstr "Password"
 
@@ -242,43 +242,31 @@ msgstr "Accept"
 msgid "Não há pedidos disponíveis no momento."
 msgstr "There are no available orders at the moment."
 
-#: templates/entregador/entrega.html:19
-msgid "Em Transporte"
-msgstr "In Transit"
-
 #: templates/entregador/entrega.html:22
 msgid "Finalizar Entrega"
 msgstr "Complete Delivery"
 
-#: templates/home/home.html:13 templates/restaurante/configuracoes.html:15
-msgid "Idioma:"
-msgstr "Language:"
-
-#: templates/home/home.html:25
+#: templates/home/home.html:15
 msgid "Bem Vindo(a)!"
 msgstr "Welcome!"
 
-#: templates/home/home.html:26
-msgid "Escuro"
-msgstr "Dark"
-
-#: templates/home/home.html:33
+#: templates/home/home.html:39 templates/home/home.html:72
 msgid "Cliente"
 msgstr "Customer"
 
-#: templates/home/home.html:34
+#: templates/home/home.html:40 templates/home/home.html:73
 msgid "Restaurante"
 msgstr "Restaurant"
 
-#: templates/home/home.html:35
+#: templates/home/home.html:41 templates/home/home.html:74
 msgid "Entregador"
 msgstr "Delivery"
 
-#: templates/home/home.html:53
+#: templates/home/home.html:59
 msgid "Entrar"
 msgstr "Login"
 
-#: templates/home/home.html:54
+#: templates/home/home.html:60
 msgid "Cadastro"
 msgstr "Sign Up"
 
@@ -321,21 +309,18 @@ msgid "Cadastrar Produto"
 msgstr "Register New Product"
 
 #: templates/restaurante/cadastro.html:7 templates/restaurante/cadastro.html:37
-#, fuzzy
 msgid "Cadastro Restaurante"
-msgstr "Restaurant Dashboard"
+msgstr "Restaurant Signup"
 
 #: templates/restaurante/cadastro.html:41
-#, fuzzy
 msgid "Nome do Restaurante"
-msgstr "Restaurant Orders"
+msgstr "Restaurant Name"
 
 #: templates/restaurante/cadastro.html:53
 msgid "CNPJ"
 msgstr "CNPJ"
 
 #: templates/restaurante/configuracoes.html:8
-#, fuzzy
 msgid "Status atual:"
 msgstr "Status:"
 
@@ -346,6 +331,10 @@ msgstr ""
 #: templates/restaurante/configuracoes.html:8
 msgid "Offline"
 msgstr ""
+
+#: templates/restaurante/configuracoes.html:15
+msgid "Idioma:"
+msgstr "Language:"
 
 #: templates/restaurante/configuracoes.html:17
 msgid "Português"
@@ -426,9 +415,9 @@ msgid "Cancelar"
 msgstr "Cancel"
 
 #: templates/restaurante/pedidos.html:7
-#, fuzzy
-msgid "Pedido"
-msgstr "Order"
+#, python-format
+msgid "Pedido nº %(id)s"
+msgstr "Order nº %(id)s"
 
 #: templates/restaurante/pedidos.html:25
 #, fuzzy
@@ -461,4 +450,13 @@ msgstr "There are no pending orders."
 
 #~ msgid "Email"
 #~ msgstr "Email"
+
+#~ msgid "Escuro"
+#~ msgstr "Dark"
+
+#~ msgid "Pedido"
+#~ msgstr "Order"
+
+#~ msgid "Em Transporte"
+#~ msgstr "In Transit"
 

@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/entregador/dashboard/style.css') }}" />
 </head>
 <body>
+    <div class="language-selector">
+        <form action="{{ url_for('set_language') }}" method="post">
+            <button type="button" class="language-button" onclick="toggleDropdown()">🌍</button>
+            <div class="dropdown" id="languageDropdown">
+                <button type="submit" name="language" value="pt" class="dropdown-item">
+                    <img src="https://flagcdn.com/w20/br.png" alt="pt"> pt
+                </button>
+                <button type="submit" name="language" value="en" class="dropdown-item">
+                    <img src="https://flagcdn.com/w20/us.png" alt="en"> en
+                </button>
+                <button type="submit" name="language" value="es" class="dropdown-item">
+                    <img src="https://flagcdn.com/w20/es.png" alt="es"> es
+                </button>
+            </div>
+        </form>
+    </div>
     <div class="dashboard-container">
         <!-- Barra Lateral -->
         <aside class="sidebar">
@@ -52,5 +68,16 @@
             {% endblock %}
         </main>
     </div>
+    <script>
+        function toggleDropdown() {
+        document.getElementById("languageDropdown").classList.toggle("show");
+    }
+
+    window.onclick = function (e) {
+        if (!e.target.closest('.language-selector')) {
+            document.getElementById("languageDropdown")?.classList.remove("show");
+        }
+    };
+    </script>
 </body>
 </html>

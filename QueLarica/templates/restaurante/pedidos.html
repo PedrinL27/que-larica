@@ -4,7 +4,7 @@
     {% if pedidos %}
         {% for detalhes in pedidos %}
         <div class="pedidos-container">
-            <h2>{{ _('Pedido') }} #{{ detalhes.pedido.id }}</h2>
+            <h2>{{ _('Pedido nº %(id)s', id=detalhes.pedido.id) }}</h2>
             <p><strong>{{ _('Cliente:') }}</strong> {{ detalhes.cliente.nome }}</p>
             <p><strong>{{ _('Endereço:') }}</strong> {{ detalhes.cliente.endereco }}</p>
             <p><strong>{{ _('Status:') }}</strong> {{ _(detalhes.pedido.status) }}</p>
