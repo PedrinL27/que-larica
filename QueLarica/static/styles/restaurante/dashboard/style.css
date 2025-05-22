@@ -614,3 +614,101 @@ textarea::placeholder {
     height: 14px;
 }
 
+.relatorios-wrapper {
+    background-color: rgb(20, 106, 177, 0.2);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+
+.relatorios-container {
+    padding: 20px;
+    color: #000;
+}
+
+.titulo-relatorio {
+    font-size: 26px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.filtro-form {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.filtro-grupo {
+    display: flex;
+    flex-direction: column;
+}
+
+.filtro-grupo label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.filtro-form input[type="date"] {
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn-filtrar {
+    padding: 8px 16px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-filtrar:hover {
+    background-color: #1976D2;
+}
+
+.vendas-total {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.pedidos-container2 {
+    background: rgba(255, 255, 255);
+    padding: 20px;
+    margin: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pedidos-container2 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pedidos-container2 ul li {
+    background: rgba(33, 150, 243);
+    font-weight: bold;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-size: 0.9rem;
+    transition: all 0.2s ease-in-out; /* Adiciona transição para todas as propriedades */
+}
+
+.pedidos-container2 ul li:hover { 
+    transform: scale(1.01); /* Expanda ligeiramente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aumenta a sombra */
+
+}

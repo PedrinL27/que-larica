@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from flask_babel import Babel, get_locale
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy import func
 from flask_migrate import Migrate
 from werkzeug.utils import secure_filename
 from functools import wraps
@@ -714,6 +715,55 @@ def enviar_para_entrega():
         flash('Pedido enviado para entrega!', 'success')
 
     return redirect(url_for('meus_pedidos'))
+
+@app.route('/relatorios', methods=['GET', 'POST'])
+@login_required
+def relatorios():
+    if session['user_type'] != 'restaurante':
+        return redirect('/')
+
+    restaurante_id = session['user_id']
+    restaurante = Restaurante.query.get(restaurante_id)
+
+    data_inicio = request.form.get('data_inicio')
+    data_fim = request.form.get('data_fim')
+
+    pedidos_query = Pedido.query.filter_by(restaurante_id=restaurante_id)
+
+    if data_inicio and data_fim:
+        try:
+            data_inicio_dt = datetime.strptime(data_inicio, '%Y-%m-%d')
+            data_fim_dt = datetime.strptime(data_fim, '%Y-%m-%d')
+            data_fim_dt = datetime.combine(data_fim_dt, datetime.max.time())  # inclui o dia todo
+            pedidos_query = pedidos_query.filter(Pedido.data_pedido.between(data_inicio_dt, data_fim_dt))
+        except ValueError:
+            flash('Formato de data inválido.', 'error')
+
+    pedidos = pedidos_query.all()
+
+    pedidos_detalhados = []
+    total_vendas = 0
+    for pedido in pedidos:
+        cliente = Cliente.query.get(pedido.cliente_id)
+        itens = ItemPedido.query.filter_by(pedido_id=pedido.id).all()
+        total_pedido = sum(item.subtotal for item in itens)
+        total_vendas += total_pedido
+
+        pedidos_detalhados.append({
+            'pedido': pedido,
+            'cliente': cliente,
+            'itens': itens,
+            'total': total_pedido
+        })
+
+    return render_template(
+        'restaurante/relatorios.html',
+        restaurante=restaurante,
+        pedidos=pedidos_detalhados,
+        total_vendas=total_vendas,
+        data_inicio=data_inicio,
+        data_fim=data_fim
+    )
 
 
 @app.route('/configuracoes', methods=['GET', 'POST'])

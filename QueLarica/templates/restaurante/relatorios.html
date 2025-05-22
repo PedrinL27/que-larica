@@ -1,0 +1,53 @@
+{% extends 'restaurante/dashboard.html' %}
+
+{% block content %}
+<div class="relatorios-wrapper">
+    <div class="relatorios-container">
+        <h2 class="titulo-relatorio">{{ _('Relatórios de Vendas') }}</h2>
+
+        <form method="POST" class="filtro-form">
+            <div class="filtro-grupo">
+                <label for="data_inicio">{{ _('Data Início:') }}</label>
+                <input type="date" name="data_inicio" value="{{ data_inicio }}">
+            </div>
+            <div class="filtro-grupo">
+                <label for="data_fim">{{ _('Data Fim:') }}</label>
+                <input type="date" name="data_fim" value="{{ data_fim }}">
+            </div>
+            <button type="submit" class="btn-filtrar">{{ _('Filtrar') }}</button>
+        </form>
+
+        <div class="vendas-total">
+            <strong>{{ _('Total de Vendas no Período:') }}</strong> R$ {{ "%.2f"|format(total_vendas) }}
+        </div>
+
+        <hr>
+
+        {% if pedidos %}
+            {% for detalhes in pedidos %}
+            <div class="pedidos-container2">
+                <h2>{{ _('Pedido nº %(id)s', id=detalhes.pedido.id) }}</h2>
+                <p><strong>{{ _('Cliente:') }}</strong> {{ detalhes.cliente.nome }}</p>
+                <p><strong>{{ _('Data:') }}</strong> {{ detalhes.pedido.data_pedido.strftime('%d/%m/%Y %H:%M') }}</p>
+                <p><strong>{{ _('Status:') }}</strong> {{ _(detalhes.pedido.status) }}</p>
+
+                <h4>{{ _('Itens:') }}</h4>
+                {% if detalhes.itens %}
+                    <ul>
+                        {% for item in detalhes.itens %}
+                            <li class="item-listado">{{ item.quantidade }}x {{ item.produto_nome }} - R$ {{ "%.2f"|format(item.subtotal) }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p style="color: #555;">{{ _('Nenhum item registrado para este pedido.') }}</p>
+                {% endif %}
+
+                <p><strong>{{ _('Total:') }}</strong> R$ {{ "%.2f"|format(detalhes.total) }}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p style="margin-top: 20px;">{{ _('Nenhum pedido encontrado no período selecionado.') }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

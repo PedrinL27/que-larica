@@ -21,6 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
         passwordInput.addEventListener('input', hideError);
     }
 
+    [emailInput, passwordInput].forEach(input => {
+        input.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                loginButton.click();
+            }
+        });
+    });
+
     loginButton.addEventListener('click', function () {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;

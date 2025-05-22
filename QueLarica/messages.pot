@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-05-20 20:11-0300\n"
+"POT-Creation-Date: 2025-05-21 14:20-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,7 +62,7 @@ msgstr ""
 msgid "Cardápio de"
 msgstr ""
 
-#: templates/cliente/cardapio.html:10 templates/restaurante/dashboard.html:34
+#: templates/cliente/cardapio.html:10 templates/restaurante/dashboard.html:50
 msgid "Pesquisar"
 msgstr ""
 
@@ -83,8 +83,9 @@ msgid "Quantidade:"
 msgstr ""
 
 #: templates/cliente/carrinho.html:44 templates/cliente/pedidos.html:19
-#: templates/entregador/dashboard.html:39 templates/entregador/entrega.html:17
+#: templates/entregador/dashboard.html:55 templates/entregador/entrega.html:17
 #: templates/restaurante/pedidos.html:19
+#: templates/restaurante/relatorios.html:45
 msgid "Total:"
 msgstr ""
 
@@ -112,75 +113,77 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: templates/cliente/dashboard.html:20 templates/entregador/dashboard.html:18
-#: templates/restaurante/dashboard.html:19
+#: templates/cliente/dashboard.html:36 templates/entregador/dashboard.html:34
+#: templates/restaurante/dashboard.html:34
 msgid "Início"
 msgstr ""
 
-#: templates/cliente/dashboard.html:21
+#: templates/cliente/dashboard.html:37
 msgid "Carrinho"
 msgstr ""
 
-#: templates/cliente/dashboard.html:22 templates/restaurante/dashboard.html:21
+#: templates/cliente/dashboard.html:38 templates/restaurante/dashboard.html:36
 msgid "Pedidos"
 msgstr ""
 
-#: templates/cliente/dashboard.html:23 templates/entregador/dashboard.html:20
+#: templates/cliente/dashboard.html:39 templates/entregador/dashboard.html:36
 #: templates/restaurante/configuracoes.html:6
-#: templates/restaurante/dashboard.html:22
+#: templates/restaurante/dashboard.html:38
 msgid "Configurações"
 msgstr ""
 
-#: templates/cliente/dashboard.html:24 templates/entregador/dashboard.html:21
-#: templates/restaurante/dashboard.html:23
+#: templates/cliente/dashboard.html:40 templates/entregador/dashboard.html:37
+#: templates/restaurante/dashboard.html:39
 msgid "Sair"
 msgstr ""
 
-#: templates/cliente/dashboard.html:33
+#: templates/cliente/dashboard.html:49
 msgid "Restaurantes Online"
 msgstr ""
 
-#: templates/cliente/dashboard.html:39
+#: templates/cliente/dashboard.html:55
 msgid "Foto de"
 msgstr ""
 
-#: templates/cliente/dashboard.html:41
+#: templates/cliente/dashboard.html:57
 #: templates/restaurante/configuracoes.html:30
 msgid "Foto padrão"
 msgstr ""
 
-#: templates/cliente/dashboard.html:45 templates/restaurante/pedidos.html:9
+#: templates/cliente/dashboard.html:61 templates/restaurante/pedidos.html:9
 msgid "Endereço:"
 msgstr ""
 
-#: templates/cliente/dashboard.html:47
+#: templates/cliente/dashboard.html:63
 msgid "Ver Cardápio"
 msgstr ""
 
-#: templates/cliente/dashboard.html:52
+#: templates/cliente/dashboard.html:68
 msgid "Não há restaurantes online no momento."
 msgstr ""
 
-#: templates/cliente/pedidos.html:7 templates/entregador/dashboard.html:34
+#: templates/cliente/pedidos.html:7 templates/entregador/dashboard.html:50
 #: templates/entregador/entrega.html:6
 msgid "Pedido #"
 msgstr ""
 
-#: templates/cliente/pedidos.html:8
+#: templates/cliente/pedidos.html:8 templates/restaurante/relatorios.html:31
 msgid "Data:"
 msgstr ""
 
-#: templates/cliente/pedidos.html:9 templates/entregador/dashboard.html:35
+#: templates/cliente/pedidos.html:9 templates/entregador/dashboard.html:51
 msgid "Restaurante:"
 msgstr ""
 
 #: templates/cliente/pedidos.html:10 templates/entregador/entrega.html:9
 #: templates/restaurante/pedidos.html:10
+#: templates/restaurante/relatorios.html:32
 msgid "Status:"
 msgstr ""
 
 #: templates/cliente/pedidos.html:12 templates/entregador/entrega.html:11
 #: templates/restaurante/pedidos.html:12
+#: templates/restaurante/relatorios.html:34
 msgid "Itens:"
 msgstr ""
 
@@ -212,32 +215,33 @@ msgstr ""
 msgid "Dashboard do Entregador"
 msgstr ""
 
-#: templates/entregador/dashboard.html:19
+#: templates/entregador/dashboard.html:35
 msgid "Entregas"
 msgstr ""
 
-#: templates/entregador/dashboard.html:29
+#: templates/entregador/dashboard.html:45
 msgid "Pedidos Disponíveis"
 msgstr ""
 
-#: templates/entregador/dashboard.html:36
+#: templates/entregador/dashboard.html:52
 msgid "Endereço do Restaurante:"
 msgstr ""
 
-#: templates/entregador/dashboard.html:37 templates/entregador/entrega.html:7
+#: templates/entregador/dashboard.html:53 templates/entregador/entrega.html:7
 #: templates/restaurante/pedidos.html:8
+#: templates/restaurante/relatorios.html:30
 msgid "Cliente:"
 msgstr ""
 
-#: templates/entregador/dashboard.html:38 templates/entregador/entrega.html:8
+#: templates/entregador/dashboard.html:54 templates/entregador/entrega.html:8
 msgid "Endereço do Cliente:"
 msgstr ""
 
-#: templates/entregador/dashboard.html:43
+#: templates/entregador/dashboard.html:59
 msgid "Aceitar"
 msgstr ""
 
-#: templates/entregador/dashboard.html:49
+#: templates/entregador/dashboard.html:65
 msgid "Não há pedidos disponíveis no momento."
 msgstr ""
 
@@ -249,15 +253,15 @@ msgstr ""
 msgid "Bem Vindo(a)!"
 msgstr ""
 
-#: templates/home/home.html:39 templates/home/home.html:72
+#: templates/home/home.html:39 templates/home/home.html:71
 msgid "Cliente"
 msgstr ""
 
-#: templates/home/home.html:40 templates/home/home.html:73
+#: templates/home/home.html:40 templates/home/home.html:72
 msgid "Restaurante"
 msgstr ""
 
-#: templates/home/home.html:41 templates/home/home.html:74
+#: templates/home/home.html:41 templates/home/home.html:73
 msgid "Entregador"
 msgstr ""
 
@@ -359,27 +363,31 @@ msgstr ""
 msgid "Enviar Foto"
 msgstr ""
 
-#: templates/restaurante/dashboard.html:20
+#: templates/restaurante/dashboard.html:35
 msgid "Cadastrar Item"
 msgstr ""
 
-#: templates/restaurante/dashboard.html:32
+#: templates/restaurante/dashboard.html:37
+msgid "Relatórios"
+msgstr ""
+
+#: templates/restaurante/dashboard.html:48
 msgid "Itens do Menu"
 msgstr ""
 
-#: templates/restaurante/dashboard.html:57
+#: templates/restaurante/dashboard.html:73
 msgid "Editar"
 msgstr ""
 
-#: templates/restaurante/dashboard.html:61
+#: templates/restaurante/dashboard.html:77
 msgid "Excluir"
 msgstr ""
 
-#: templates/restaurante/dashboard.html:68
+#: templates/restaurante/dashboard.html:84
 msgid "Sem itens cadastrados."
 msgstr ""
 
-#: templates/restaurante/dashboard.html:80
+#: templates/restaurante/dashboard.html:95
 msgid "Tem certeza que deseja excluir este item?"
 msgstr ""
 
@@ -412,6 +420,7 @@ msgid "Cancelar"
 msgstr ""
 
 #: templates/restaurante/pedidos.html:7
+#: templates/restaurante/relatorios.html:29
 #, python-format
 msgid "Pedido nº %(id)s"
 msgstr ""
@@ -430,5 +439,33 @@ msgstr ""
 
 #: templates/restaurante/pedidos.html:46
 msgid "Não há pedidos pendentes."
+msgstr ""
+
+#: templates/restaurante/relatorios.html:6
+msgid "Relatórios de Vendas"
+msgstr ""
+
+#: templates/restaurante/relatorios.html:10
+msgid "Data Início:"
+msgstr ""
+
+#: templates/restaurante/relatorios.html:14
+msgid "Data Fim:"
+msgstr ""
+
+#: templates/restaurante/relatorios.html:17
+msgid "Filtrar"
+msgstr ""
+
+#: templates/restaurante/relatorios.html:21
+msgid "Total de Vendas no Período:"
+msgstr ""
+
+#: templates/restaurante/relatorios.html:42
+msgid "Nenhum item registrado para este pedido."
+msgstr ""
+
+#: templates/restaurante/relatorios.html:49
+msgid "Nenhum pedido encontrado no período selecionado."
 msgstr ""
 
