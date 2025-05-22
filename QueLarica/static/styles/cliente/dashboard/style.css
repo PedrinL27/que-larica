@@ -136,6 +136,8 @@ html {
     color: #7f8c8d;
 }
 
+
+
 .ver-cardapio-btn {
     padding: 10px 20px;
     background-color: #007bff;
@@ -629,3 +631,74 @@ input[type="radio"]:checked + .opcao-label {
     width: 20px;
     height: 14px;
 }
+
+.avaliacao {
+    font-size: 30px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.avaliacao-form {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #eaf4e9;
+    border-radius: 8px;
+}
+
+.avaliacao-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.estrelas {
+    direction: rtl;
+    display: inline-flex;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.estrelas input[type="radio"] {
+    display: none;
+}
+
+.estrelas label {
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.estrelas input[type="radio"]:checked ~ label,
+.estrelas label:hover,
+.estrelas label:hover ~ label {
+    color: gold;
+}
+
+.botao-avaliar {
+    margin-left: 10px;
+    background-color: #007bff;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.botao-avaliar:hover {
+    background-color: #0056b3;
+}
+
+.estrela-cheia {
+    color: gold;
+    font-size: 20px;
+}
+
+.estrela-vazia {
+    color: #ccc;
+    font-size: 20px;
+}
+
+

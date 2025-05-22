@@ -3,6 +3,7 @@ from flask_babel import Babel, get_locale
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy import func
+from sqlalchemy.ext.hybrid import hybrid_property
 from flask_migrate import Migrate
 from werkzeug.utils import secure_filename
 from functools import wraps
@@ -68,6 +69,13 @@ class Restaurante(db.Model):
     status = db.Column(db.Boolean, default=False) 
     produtos = db.relationship('Produto', back_populates='restaurante', lazy=True)
     fotoperfil = db.Column(db.String(200), nullable=True)
+    
+    @hybrid_property
+    def media_avaliacoes(self):
+        avaliacoes = [pedido.avaliacao for pedido in self.pedidos if pedido.avaliacao]
+        if avaliacoes:
+            return sum(avaliacoes) / len(avaliacoes)
+        return 0
 
 class Cliente(db.Model):
     __tablename__ = 'clientes'
@@ -122,6 +130,7 @@ class Pedido(db.Model):
     entregador_id = db.Column(db.Integer, db.ForeignKey('entregadores.id'), nullable=True)
     status = db.Column(db.String(20), default="Aguardando Confirmação")  
     data_pedido = db.Column(db.DateTime, default=datetime.now)
+    avaliacao = db.Column(db.Integer) 
     forma_pagamento = db.Column(db.String(20), nullable=True)
     itens = db.relationship('ItemPedido', backref='pedido', lazy=True)
     cliente = db.relationship('Cliente', backref='pedidos')
@@ -137,8 +146,8 @@ class ItemPedido(db.Model):
     subtotal = db.Column(db.Float, nullable=False)
 
 # Comando para criar as tabelas no banco de dados
-#with app.app_context():
-#   db.create_all()
+with app.app_context():
+   db.create_all()
 
 def login_required(f):
     @wraps(f)
@@ -513,6 +522,36 @@ def meus_pedidos():
         })
 
     return render_template('cliente/pedidos.html', cliente=cliente, pedidos=pedidos_detalhados)
+
+@app.route('/avaliar_pedido', methods=['POST'])
+@login_required
+def avaliar_pedido():
+    if session['user_type'] != 'cliente':
+        return redirect('/')
+
+    pedido_id = request.form.get('pedido_id')
+    nota_str = request.form.get('avaliacao')  # Agora nota_str está definida
+    
+    try:
+        nota = int(nota_str)
+    except (TypeError, ValueError):
+        flash('Você precisa escolher uma nota de 1 a 5 estrelas.', 'error')
+        return redirect(url_for('meus_pedidos'))
+
+    if not pedido_id:
+        flash('Pedido inválido.', 'error')
+        return redirect(url_for('meus_pedidos'))
+
+    pedido = Pedido.query.get(pedido_id)
+
+    if pedido and pedido.cliente_id == session['user_id'] and pedido.status == 'Concluído' and not pedido.avaliacao:
+        pedido.avaliacao = nota
+        db.session.commit()
+        flash('Avaliação registrada com sucesso!', 'success')
+    else:
+        flash('Erro ao registrar avaliação.', 'error')
+
+    return redirect(url_for('meus_pedidos'))
 
 @app.route('/dashboard_restaurante')
 @login_required

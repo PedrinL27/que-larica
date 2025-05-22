@@ -2,25 +2,50 @@
 
 {% block content %}
 {% if pedidos %}
-    {% for pedido in pedidos %}
-    <div class="pedidos-container">
-        <h2>{{ _('Pedido #') }}{{ pedido.id }}</h2>
-        <p><strong>{{ _('Data:') }}</strong> {{ pedido.pedido.data_pedido_formatada }}</p>
-        <p><strong>{{ _('Restaurante:') }}</strong> {{ pedido.pedido.restaurante.nome }}</p>
-        <p><strong>{{ _('Status:') }}</strong> {{ pedido.status }}</p>
-        
-        <p><strong>{{ _('Itens:') }}</strong></p>
-        <ul>
-            {% for item in pedido.itens %}
-                <li>{{ item.quantidade }}x {{ item.produto_nome }} - R$ {{ "%.2f"|format(item.subtotal) }}</li>
-            {% endfor %}
-        </ul>
+{% for pedido in pedidos %}
+<div class="pedidos-container">
+    <h2>{{ _('Pedido #') }}{{ pedido.id }}</h2>
+    <p><strong>{{ _('Data:') }}</strong> {{ pedido.pedido.data_pedido_formatada }}</p>
+    <p><strong>{{ _('Restaurante:') }}</strong> {{ pedido.pedido.restaurante.nome }}</p>
+    <p><strong>{{ _('Status:') }}</strong> {{ pedido.status }}</p>
 
-        <p><strong>{{ _('Total:') }}</strong> R$ {{ "%.2f"|format(pedido.total) }}</p>
-    </div>
-    {% endfor %}
+    <p><strong>{{ _('Itens:') }}</strong></p>
+    <ul>
+        {% for item in pedido.itens %}
+        <li>{{ item.quantidade }}x {{ item.produto_nome }} - R$ {{ "%.2f"|format(item.subtotal) }}</li>
+        {% endfor %}
+    </ul>
+
+    <p><strong>{{ _('Total:') }}</strong> R$ {{ "%.2f"|format(pedido.total) }}</p>
+
+    {% if pedido.status == 'Concluído' and not pedido.pedido.avaliacao %}
+    <form method="POST" action="{{ url_for('avaliar_pedido') }}" class="avaliacao-form">
+        <input type="hidden" name="pedido_id" value="{{ pedido.pedido.id }}">
+        <label class="avaliacao-label">{{ _('Avalie o restaurante:') }}</label>
+        <div class="estrelas">
+            {% for i in range(5, 0, -1) %}
+            <input type="radio" id="star{{ pedido.pedido.id }}-{{ i }}" name="avaliacao" value="{{ i }}">
+            <label for="star{{ pedido.pedido.id }}-{{ i }}" title="{{ i }} estrelas">★</label>
+            {% endfor %}
+        </div>
+        <button type="submit" class="botao-avaliar">{{ _('Enviar Avaliação') }}</button>
+    </form>
+    {% elif pedido.pedido.avaliacao %}
+    <p><strong>{{ _('Sua avaliação:') }}</strong>
+        {% for i in range(1, 6) %}
+        {% if i <= pedido.pedido.avaliacao %} <span class="estrela-cheia">★</span>
+            {% else %}
+            <span class="estrela-vazia">☆</span>
+            {% endif %}
+            {% endfor %}
+    </p>
+    {% endif %}
+
+</div>
+{% endfor %}
+
 {% else %}
-    <p class="sem-pedidos">{{ _('Você não tem pedidos no momento.') }}</p>
+<p class="sem-pedidos">{{ _('Você não tem pedidos no momento.') }}</p>
 {% endif %}
 
 {% endblock %}

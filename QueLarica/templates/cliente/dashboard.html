@@ -59,6 +59,16 @@
                             <div class="restaurante-info">
                                 <h2>{{ restaurante.nome }}</h2>
                                 <p class="endereco"><strong>{{ _('Endereço:') }}</strong> {{ restaurante.endereco }}</p>
+                                {% set media = restaurante.media_avaliacoes %}
+                                {% if media > 0 %}
+                                    <div class="avaliacao">
+                                        <p>
+                                            ⭐ {{ "%.1f"|format(media) }}/5
+                                        </p>
+                                    </div>
+                                {% else %}
+                                <p class="avaliacao sem-avaliacoes">{{ _('Ainda sem avaliações') }}</p>
+                                {% endif %}
                             </div>
                             <a href="{{ url_for('cardapio', restaurante_id=restaurante.id) }}" class="ver-cardapio-btn">{{ _('Ver Cardápio') }}</a>
                         </div>
@@ -99,6 +109,18 @@
             document.getElementById("languageDropdown")?.classList.remove("show");
         }
     };
+    document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.avaliacao-form').forEach(form => {
+        form.addEventListener('submit', function (e) {
+            const selecionado = form.querySelector('input[name="avaliacao"]:checked');
+            if (!selecionado) {
+                e.preventDefault();
+                alert('Por favor, selecione pelo menos uma estrela.');
+                }
+            });
+        });
+    });
+   
 </script>
 </body>
 </html>
