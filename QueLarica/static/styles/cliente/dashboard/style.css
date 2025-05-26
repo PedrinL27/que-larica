@@ -701,4 +701,86 @@ input[type="radio"]:checked + .opcao-label {
     font-size: 20px;
 }
 
+.configuracoes {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 20px;
+    background: rgba(76, 175, 80, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.configuracoes h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Campos de entrada */
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #34495e;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.botoes-ee {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    border-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.button-cancelar {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    text-decoration: none;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.button-cancelar:hover {
+    background-color: #c0392b;
+}
+
 

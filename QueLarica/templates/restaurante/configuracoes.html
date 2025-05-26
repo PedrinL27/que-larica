@@ -5,30 +5,26 @@
 <div class="configuracoes">
     <h1>{{ _('Configurações') }}</h1>
     <!-- Status do restaurante -->
-    <p>{{ _('Status atual:') }} <strong id="status-text">{{ _('Online') if restaurante.status else _('Offline') }}</strong></p>
+    <p>{{ _('Status atual:') }} <strong id="status-text">{{ _('Online') if restaurante.status else _('Offline')
+            }}</strong></p>
     <label class="toggle">
         <input type="checkbox" id="status-toggle" {% if restaurante.status %}checked{% endif %}>
         <span class="slider"></span>
     </label>
-      
-    <form action="{{ url_for('set_language') }}" method="post">
-        <label for="language">{{ _('Idioma:') }}</label>
-        <select name="language" onchange="this.form.submit()">
-            <option value="pt" {% if current_locale == 'pt' %}selected{% endif %}>{{ _('Português') }}</option>
-            <option value="en" {% if current_locale == 'en' %}selected{% endif %}>{{ _('English') }}</option>
-            <option value="es" {% if current_locale == 'es' %}selected{% endif %}>{{ _('Español') }}</option>
-        </select>
-    </form>
-    
+
+
     <!-- Formulário para enviar foto -->
-    <form action="{{ url_for('upload_foto_restaurante', restaurante_id=restaurante.id) }}" method="POST" enctype="multipart/form-data" id="foto-form">
+    <form action="{{ url_for('upload_foto_restaurante', restaurante_id=restaurante.id) }}" method="POST"
+        enctype="multipart/form-data" id="foto-form">
         <label class="foto-titulo" for="foto">{{ _('Foto de Perfil:') }}</label><br>
         <div class="foto-preview-container">
-        {% if restaurante.fotoperfil %}
-            <img src="{{ url_for('static', filename='uploads/' + restaurante.fotoperfil) }}" alt="{{ _('Foto preview') }}" class="restaurante-foto">
-        {% else %}
-            <img src="{{ url_for('static', filename='img/restaurante/default-restaurante.png') }}" alt="{{ _('Foto padrão') }}" class="restaurante-foto">
-        {% endif %}
+            {% if restaurante.fotoperfil %}
+            <img src="{{ url_for('static', filename='uploads/' + restaurante.fotoperfil) }}"
+                alt="{{ _('Foto preview') }}" class="restaurante-foto">
+            {% else %}
+            <img src="{{ url_for('static', filename='img/restaurante/default-restaurante.png') }}"
+                alt="{{ _('Foto padrão') }}" class="restaurante-foto">
+            {% endif %}
         </div>
         <input class="foto-upload" type="file" name="foto" id="foto" accept="image/*" required><br>
         <button type="submit" class="btn-upload">{{ _('Enviar Foto') }}</button>

@@ -523,6 +523,37 @@ def meus_pedidos():
 
     return render_template('cliente/pedidos.html', cliente=cliente, pedidos=pedidos_detalhados)
 
+@app.route('/configuracoes_cliente', methods=['GET', 'POST'])
+@login_required
+def configuracoes_cliente():
+    if session['user_type'] != 'cliente':
+        return redirect(url_for('home'))
+
+    cliente_id = session['user_id']
+    cliente = Cliente.query.get(cliente_id)
+
+    if not cliente:
+        flash('Cliente não encontrado.', 'error')
+        return redirect(url_for('dashboard_cliente'))
+
+    if request.method == 'POST':
+        try:
+            cliente.nome = request.form.get('nome')
+            cliente.email = request.form.get('email')
+            cliente.cpf = request.form.get('cpf')
+            cliente.endereco = request.form.get('endereco')
+
+            db.session.commit()
+            flash('Dados atualizados com sucesso!', 'success')
+            return redirect(url_for('dashboard_cliente'))
+        except Exception as e:
+            db.session.rollback()
+            flash(f'Ocorreu um erro ao atualizar os dados: {str(e)}', 'error')
+            return redirect(url_for('configuracoes_cliente'))
+
+    return render_template('cliente/configuracoes.html', cliente=cliente)
+
+
 @app.route('/avaliar_pedido', methods=['POST'])
 @login_required
 def avaliar_pedido():
@@ -935,6 +966,34 @@ def entrega():
         })
 
     return render_template('entregador/entrega.html', entregador=entregador, pedidos=pedidos_resultado)
+
+@app.route('/configuracoes_entregador', methods=['GET', 'POST'])
+@login_required
+def configuracoes_entregador():
+    if session['user_type'] != 'entregador':
+        return redirect(url_for('home'))
+
+    entregador = Entregador.query.get(session['user_id'])
+
+    if not entregador:
+        flash('Cliente não encontrado.', 'error')
+        return redirect(url_for('dashboard_entregador'))
+
+    if request.method == 'POST':
+        try:
+            entregador.nome = request.form.get('nome')
+            entregador.email = request.form.get('email')
+            entregador.cpf = request.form.get('cpf')
+
+            db.session.commit()
+            flash('Dados atualizados com sucesso!', 'success')
+            return redirect(url_for('dashboard_entregador'))
+        except Exception as e:
+            db.session.rollback()
+            flash(f'Ocorreu um erro ao atualizar os dados: {str(e)}', 'error')
+            return redirect(url_for('configuracoes_entregador'))
+
+    return render_template('entregador/configuracoes.html', entregador=entregador)
 
 
 @app.route('/aceitar_entrega', methods=['POST'])
