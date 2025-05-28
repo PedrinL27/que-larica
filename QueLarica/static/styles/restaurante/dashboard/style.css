@@ -714,3 +714,10 @@ textarea::placeholder {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aumenta a sombra */
 
 }
+
+.vendas-avaliacao {
+    display: flex;
+    align-items: center;
+    gap: 24rem;
+    font-size: 20px;
+}

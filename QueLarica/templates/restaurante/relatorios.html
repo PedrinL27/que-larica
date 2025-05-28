@@ -17,36 +17,46 @@
             <button type="submit" class="btn-filtrar">{{ _('Filtrar') }}</button>
         </form>
 
-        <div class="vendas-total">
-            <strong>{{ _('Total de Vendas no Período:') }}</strong> R$ {{ "%.2f"|format(total_vendas) }}
+        <div class="vendas-avaliacao">
+        <strong>{{ _('Total de Vendas no Período:') }} R$ {{ "%.2f"|format(total_vendas) }} </strong>
+        {% set media = restaurante.media_avaliacoes %}
+        {% if media > 0 %}
+            <p>
+                ⭐ {{ "%.1f"|format(media) }}/5
+            </p>
         </div>
+        {% else %}
+        <p class="avaliacao sem-avaliacoes">{{ _('Ainda sem avaliações') }}</p>
+        {% endif %}
 
         <hr>
 
         {% if pedidos %}
-            {% for detalhes in pedidos %}
-            <div class="pedidos-container2">
-                <h2>{{ _('Pedido nº %(id)s', id=detalhes.pedido.id) }}</h2>
-                <p><strong>{{ _('Cliente:') }}</strong> {{ detalhes.cliente.nome }}</p>
-                <p><strong>{{ _('Data:') }}</strong> {{ detalhes.pedido.data_pedido.strftime('%d/%m/%Y %H:%M') }}</p>
-                <p><strong>{{ _('Status:') }}</strong> {{ _(detalhes.pedido.status) }}</p>
+        {% for detalhes in pedidos %}
+        <div class="pedidos-container2">
+            <h2>{{ _('Pedido nº %(id)s', id=detalhes.pedido.id) }}</h2>
+            <p><strong>{{ _('Cliente:') }}</strong> {{ detalhes.cliente.nome }}</p>
+            <p><strong>{{ _('Data:') }}</strong> {{ detalhes.pedido.data_pedido.strftime('%d/%m/%Y %H:%M') }}</p>
+            <p><strong>{{ _('Status:') }}</strong> {{ _(detalhes.pedido.status) }}</p>
 
-                <h4>{{ _('Itens:') }}</h4>
-                {% if detalhes.itens %}
-                    <ul>
-                        {% for item in detalhes.itens %}
-                            <li class="item-listado">{{ item.quantidade }}x {{ item.produto_nome }} - R$ {{ "%.2f"|format(item.subtotal) }}</li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <p style="color: #555;">{{ _('Nenhum item registrado para este pedido.') }}</p>
-                {% endif %}
 
-                <p><strong>{{ _('Total:') }}</strong> R$ {{ "%.2f"|format(detalhes.total) }}</p>
-            </div>
-            {% endfor %}
+            <h4>{{ _('Itens:') }}</h4>
+            {% if detalhes.itens %}
+            <ul>
+                {% for item in detalhes.itens %}
+                <li class="item-listado">{{ item.quantidade }}x {{ item.produto_nome }} - R$ {{
+                    "%.2f"|format(item.subtotal) }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p style="color: #555;">{{ _('Nenhum item registrado para este pedido.') }}</p>
+            {% endif %}
+
+            <p><strong>{{ _('Total:') }}</strong> R$ {{ "%.2f"|format(detalhes.total) }}</p>
+        </div>
+        {% endfor %}
         {% else %}
-            <p style="margin-top: 20px;">{{ _('Nenhum pedido encontrado no período selecionado.') }}</p>
+        <p style="margin-top: 20px;">{{ _('Nenhum pedido encontrado no período selecionado.') }}</p>
         {% endif %}
     </div>
 </div>
